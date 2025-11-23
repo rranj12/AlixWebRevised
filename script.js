@@ -393,7 +393,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Add scroll reveal animations
+    // Add scroll reveal animations for content boxes
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -408,14 +408,58 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
     
-    // Observe elements for scroll animations
-    const animatedElements = document.querySelectorAll('.content-box, .bottom-content, .subheading');
+    // Observe content boxes for scroll animations
+    const animatedElements = document.querySelectorAll('.content-box, .subheading');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
+    
+    // Scroll reveal/fade for spotlight grid container
+    const spotlightContainer = document.querySelector('.spotlight-container');
+    if (spotlightContainer) {
+        let lastScrollY = window.scrollY;
+        let isVisible = false;
+        
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            
+            // Show as soon as user scrolls down (any amount of scrolling)
+            if (currentScrollY > 50 && currentScrollY > lastScrollY) {
+                if (!isVisible) {
+                    spotlightContainer.classList.add('visible');
+                    isVisible = true;
+                }
+            }
+            // Hide when scrolling back to top
+            else if (currentScrollY <= 50 || (currentScrollY < lastScrollY && currentScrollY < 100)) {
+                if (isVisible) {
+                    spotlightContainer.classList.remove('visible');
+                    isVisible = false;
+                }
+            }
+            
+            lastScrollY = currentScrollY;
+        };
+        
+        // Initial check - ensure it's hidden on page load
+        spotlightContainer.classList.remove('visible');
+        isVisible = false;
+        
+        // Throttle scroll events for performance
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
     
     // Smooth scroll for the entire page
     document.documentElement.style.scrollBehavior = 'smooth';

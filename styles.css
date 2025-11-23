@@ -32,7 +32,7 @@ a {
     background: linear-gradient(to bottom, #0038f0 0%, #ffffff 100%);
     position: relative;
     width: 100%;
-    min-height: 150vh; /* Increased to accommodate lower spotlight boxes */
+    min-height: 250vh; /* Increased to accommodate grid and more scrolling */
     padding-bottom: 200px;
     overflow: hidden;
     margin-top: 0; /* Start right after header */
@@ -147,13 +147,13 @@ a {
 }
 
 .nav-portfolio {
-    left: 278px;
+    left: 240px;
     width: 117px;
     height: 30px;
 }
 
 .nav-team {
-    left: 427px;
+    left: 380px;
     width: 94px;
     height: 30px;
 }
@@ -182,40 +182,50 @@ a {
 
 /* Hero Content - Centered layout */
 .hero-content {
-    max-width: 1000px;
+    max-width: 1400px;
     text-align: center;
     position: relative;
     width: 100%;
+    padding: 0 60px;
 }
 
 /* Hero Title - Large, bold, centered heading */
 .hero-title {
     font-family: 'IBM Plex Sans JP', sans-serif;
-    font-size: 64px;
+    font-size: 72px;
     font-weight: 500;
-    line-height: 70px;
+    line-height: 84px;
     color: white;
     margin: 0 0 1.5rem 0;
     text-align: center;
+    white-space: pre-line;
+}
+
+.hero-title em {
+    font-style: normal;
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+    font-size: 1.5em; /* Make it larger than the base font */
 }
 
 /* Hero Subtitle - Smaller descriptive text */
 .hero-subtitle {
     font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 25px;
+    font-size: 18px;
     font-weight: 400;
-    line-height: normal;
+    line-height: 1.5;
     color: white;
-    margin: 0;
+    margin: 0 auto;
     text-align: center;
-    max-width: 100%;
+    max-width: 1200px;
+    padding: 0 60px;
 }
 
 /* Content Boxes */
 .content-boxes {
     position: absolute;
     z-index: 2;
-    bottom: 320px;
+    top: 100vh; /* Position below the hero content - requires scrolling */
     left: 60px;
     right: 60px;
     display: flex;
@@ -236,50 +246,91 @@ a {
     margin-left: auto;
 }
 
-/* Spotlight Container - Flexbox layout like Sequoia/Contrary */
+/* Spotlight Container - Grid layout */
 .spotlight-container {
     position: absolute;
     left: 60px;
     right: 60px;
-    top: 120vh; /* Position lower - requires scrolling */
+    top: 110vh; /* Position higher up */
     z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    pointer-events: none;
+}
+
+.spotlight-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+
+/* Spotlight Box - Individual grid item */
+.spotlight-box {
+    background-color: rgba(0, 56, 240, 0.35);
+    border-radius: 24px; /* More rounded corners */
+    padding: 40px;
     display: flex;
-    gap: 20px; /* Close gap between boxes */
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.spotlight-box:hover {
+    transform: translateY(-5px);
+    background-color: rgba(0, 56, 240, 0.45);
 }
 
 /* Bottom Content - Spotlight boxes */
 .bottom-content {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
-    font-size: 25px;
-    line-height: normal;
+    font-size: 22px;
+    line-height: 1.4;
     color: black;
-    flex: 0 1 400px; /* Flexible width, max 400px */
-    white-space: pre-wrap;
+    text-align: center;
     margin: 0;
 }
 
 /* Responsive adjustments for spotlight boxes */
 @media (max-width: 1200px) {
     .spotlight-container {
-        gap: 15px; /* Even closer on medium screens */
+        gap: 20px;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .spotlight-box {
+        min-height: 250px;
+        padding: 30px;
     }
     
     .bottom-content {
-        flex: 0 1 350px; /* Slightly smaller on medium screens */
+        font-size: 20px;
     }
 }
 
 @media (max-width: 1000px) {
     .spotlight-container {
-        flex-direction: column; /* Stack vertically on smaller screens */
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
         gap: 20px;
     }
     
+    .spotlight-box {
+        min-height: 200px;
+        padding: 25px;
+    }
+    
     .bottom-content {
-        flex: 1 1 auto; /* Full width when stacked */
-        max-width: 100%;
+        font-size: 18px;
     }
 }
 
@@ -363,21 +414,62 @@ a {
     }
     
     .content-boxes {
-        bottom: 200px;
+        top: 100vh;
     }
     
     .spotlight-container {
         left: 20px;
         right: 20px;
-        flex-direction: column;
-        gap: 20px;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        gap: 15px;
+    }
+    
+    .spotlight-box {
+        min-height: 180px;
+        padding: 20px;
     }
     
     .bottom-content {
-        font-size: 20px;
-        flex: 1 1 auto;
-        max-width: 100%;
+        font-size: 18px;
     }
 }
 
 
+
+/* Footer */
+.site-footer {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 40px 0;
+    text-align: center;
+    margin-top: auto;
+    position: relative;
+}
+
+.footer-divider {
+    position: absolute;
+    top: 0;
+    left: 60px;
+    right: 60px;
+    height: 2.4px;
+}
+
+.footer-divider::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1.2px;
+    background-color: rgba(0, 56, 240, 0.9);
+    border-radius: 2px;
+}
+
+.footer-text {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #0038f0;
+    margin: 0;
+}

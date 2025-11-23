@@ -5,11 +5,18 @@
     box-sizing: border-box;
 }
 
+html {
+    zoom: 0.9; /* Scale entire page to 90% */
+}
+
 body {
     font-family: 'IBM Plex Sans', sans-serif;
     background-color: #ffffff;
     color: #000000;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Remove underlines from all links by default */
@@ -19,35 +26,38 @@ a {
 
 .portfolio {
     position: relative;
-    min-height: 100vh;
     width: 100%;
     background-color: #ffffff;
+    flex: 1;
+    min-height: 2800px;
 }
 
-/* Header Bar */
+/* Header Bar - Separate from content (like Novana) */
 .header-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    background-color: #0038f0;
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background: #0038f0; /* Blue background to match gradient start */
+    z-index: 100;
 }
 
 /* Logo */
 .logo {
     position: absolute;
-    top: 11px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 136px;
-    height: 65px;
+    z-index: 101;
     font-family: 'Instrument Serif', serif;
     font-size: 48px;
-    color: #ffffff;
+    font-weight: 400;
+    line-height: normal;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 5px;
+    width: 136px;
+    height: 89px;
+    color: white;
     text-align: center;
     white-space: pre-wrap;
-    z-index: 10;
+    margin: 0;
     text-decoration: none !important;
     display: block;
     transition: opacity 0.3s ease;
@@ -60,26 +70,51 @@ a {
 .logo:focus,
 .logo:active {
     text-decoration: none !important;
-    color: #ffffff;
+    color: white;
     opacity: 0.8;
+}
+
+/* Line separator */
+.line-container {
+    position: absolute;
+    z-index: 101;
+    top: 75px;
+    left: 60px;
+    right: 60px;
+    height: 2.4px;
+}
+
+.line-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1.2px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 2px;
 }
 
 /* Navigation */
 .navigation {
     position: absolute;
-    top: 25px;
+    z-index: 101;
+    top: 26px;
     left: 0;
     right: 0;
-    z-index: 10;
 }
 
 .nav-item {
     position: absolute;
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 20px;
-    color: #ffffff;
-    text-decoration: none;
+    font-weight: 400;
+    line-height: normal;
+    color: white;
+    margin: 0;
+    cursor: pointer;
     transition: opacity 0.3s ease;
+    text-decoration: none;
 }
 
 .nav-item:hover {
@@ -92,24 +127,27 @@ a {
 
 .nav-approach {
     left: 60px;
-    width: 184px;
+    width: 186px;
+    height: 51px;
 }
 
 .nav-portfolio {
-    left: 278px;
+    left: 240px;
     width: 117px;
+    height: 30px;
 }
 
 .nav-team {
-    left: 427px;
+    left: 380px;
     width: 94px;
+    height: 30px;
 }
 
 .nav-bios {
     right: 60px;
     text-align: right;
     width: 94px;
-    font-family: 'Inter', sans-serif;
+    height: 30px;
 }
 
 /* Title */
@@ -141,7 +179,7 @@ a {
 /* Filters */
 .filters {
     position: absolute;
-    top: 522px;
+    top: 280px;
     left: 60px;
     display: flex;
     gap: 32px;
@@ -304,10 +342,11 @@ a {
 /* Table */
 .table {
     position: absolute;
-    top: 566px;
+    top: 360px;
     left: 60px;
     right: 60px;
     font-family: 'IBM Plex Sans', sans-serif;
+    padding-bottom: 0;
 }
 
 .table-header {
@@ -422,4 +461,43 @@ a {
     .divider {
         margin: 16px 0 0 0;
     }
+}
+
+/* Footer */
+.site-footer {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 40px 0;
+    text-align: center;
+    margin-top: auto;
+    position: relative;
+    z-index: 10;
+    clear: both;
+}
+
+.footer-divider {
+    position: absolute;
+    top: 0;
+    left: 60px;
+    right: 60px;
+    height: 2.4px;
+}
+
+.footer-divider::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1.2px;
+    background-color: rgba(0, 56, 240, 0.9);
+    border-radius: 2px;
+}
+
+.footer-text {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #0038f0;
+    margin: 0;
 }

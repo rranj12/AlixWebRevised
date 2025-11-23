@@ -17,20 +17,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="manifesto" data-name="Manifesto" data-node-id="2:6">
-        <!-- Blue Header Bar -->
-        <div class="header-bar" data-node-id="2:7"></div>
-        
+    <!-- Header/Navigation Bar (separate from content) -->
+    <header class="header-bar">
         <!-- Logo -->
         <a href="index.html" class="logo" data-node-id="2:8">Alix</a>
+        
+        <!-- Line separator -->
+        <div class="line-container" aria-hidden="true"></div>
         
         <!-- Navigation -->
         <nav class="navigation">
             <a href="our-approach.html" class="nav-item nav-approach active" data-node-id="2:9">Our Approach</a>
             <a href="portfolio.html" class="nav-item nav-portfolio" data-node-id="2:11">Portfolio</a>
             <a href="team.html" class="nav-item nav-team" data-node-id="2:10">Team</a>
-            <a href="index.html#bios" class="nav-item nav-bios" data-node-id="2:12">Bios ↗</a>
+            <p class="nav-item nav-bios" data-node-id="2:12">Bios ↗</p>
         </nav>
+    </header>
+    
+    <div class="manifesto" data-name="Manifesto" data-node-id="2:6">
         
         <!-- Main Title -->
         <div class="main-title" data-node-id="2:13">
@@ -89,6 +93,12 @@
             </p>
         </div>
     </div>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-divider"></div>
+        <p class="footer-text">© Alix Ventures 2025</p>
+    </footer>
     
     <script src="our-approach.js"></script>
 </body>

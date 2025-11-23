@@ -17,20 +17,24 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="portfolio" data-name="Portfolio" data-node-id="42:81">
-        <!-- Header Bar -->
-        <div class="header-bar" data-node-id="42:83"></div>
-
+    <!-- Header/Navigation Bar (separate from content) -->
+    <header class="header-bar">
         <!-- Logo -->
         <a href="index.html" class="logo" data-node-id="42:84">Alix</a>
-
+        
+        <!-- Line separator -->
+        <div class="line-container" aria-hidden="true"></div>
+        
         <!-- Navigation -->
         <nav class="navigation">
             <a href="our-approach.html" class="nav-item nav-approach" data-node-id="42:85">Our Approach</a>
             <a href="portfolio.html" class="nav-item nav-portfolio active" data-node-id="42:87">Portfolio</a>
             <a href="team.html" class="nav-item nav-team" data-node-id="42:86">Team</a>
-            <a href="index.html#bios" class="nav-item nav-bios" data-node-id="42:88">Bios ↗</a>
+            <p class="nav-item nav-bios" data-node-id="42:88">Bios ↗</p>
         </nav>
+    </header>
+    
+    <div class="portfolio" data-name="Portfolio" data-node-id="42:81">
 
         <!-- Title -->
         <div class="title" data-node-id="42:89">
@@ -592,6 +596,12 @@
             <div class="divider"></div>
         </div>
     </div>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-divider"></div>
+        <p class="footer-text">© Alix Ventures 2025</p>
+    </footer>
 
     <script src="portfolio.js"></script>
 </body>
