@@ -16,11 +16,18 @@ class FlowingPointCloud {
         this.time = 0;
         this.waveSpeed = 0.004; // Slower animation speed
         
+        // Mouse interaction
+        this.mouseX = null;
+        this.mouseY = null;
+        this.mouseRadius = 180; // Radius of influence
+        this.mouseStrength = 3.0; // Strength of the pinch effect
+        
         // Performance monitoring
         this.frameCount = 0;
         this.lastTime = performance.now();
         
         this.setupCanvas();
+        this.setupMouseInteraction();
         this.animate();
         
         // Handle window resize
@@ -61,6 +68,36 @@ class FlowingPointCloud {
     setupCanvas() {
         this.ctx.imageSmoothingEnabled = true;
         this.ctx.imageSmoothingQuality = 'high';
+    }
+    
+    setupMouseInteraction() {
+        const desktop = document.querySelector('.desktop');
+        if (!desktop) return;
+        
+        // Track mouse position relative to the canvas/desktop container
+        // Use passive listener and requestAnimationFrame for maximum fluidity
+        let rafScheduled = false;
+        const updateMouse = (e) => {
+            const rect = desktop.getBoundingClientRect();
+            this.mouseX = e.clientX - rect.left;
+            this.mouseY = e.clientY - rect.top;
+            
+            // Force immediate update if not already scheduled
+            if (!rafScheduled) {
+                rafScheduled = true;
+                requestAnimationFrame(() => {
+                    rafScheduled = false;
+                });
+            }
+        };
+        
+        desktop.addEventListener('mousemove', updateMouse, { passive: true });
+        
+        // Reset when mouse leaves
+        desktop.addEventListener('mouseleave', () => {
+            this.mouseX = null;
+            this.mouseY = null;
+        }, { passive: true });
     }
     
     // Generate flowing, organic point cloud
@@ -265,9 +302,60 @@ class FlowingPointCloud {
             const wave6 = Math.cos(point.gridY * 0.28 - point.gridX * 0.12 + wavePhase * 0.9) * 0.12;
             const wave7 = Math.sin((point.gridX * 2 + point.gridY) * 0.08 + wavePhase * 2.0) * 0.1;
             
-            const flowX = point.baseX;
-            const flowY = point.baseY;
-            const flowZ = point.baseZ + wave1 + wave2 + wave3 + wave4 + wave5 + wave6 + wave7;
+            let flowX = point.baseX;
+            let flowY = point.baseY;
+            let flowZ = point.baseZ + wave1 + wave2 + wave3 + wave4 + wave5 + wave6 + wave7;
+            
+            // Apply mouse interaction - create wave pinch effect (particles congregate at cursor)
+            // Optimized for maximum fluidity and instant response
+            if (this.mouseX !== null && this.mouseY !== null) {
+                // Pre-calculate constants for performance
+                const scale = Math.min(containerWidth, containerHeight) * 0.15;
+                const centerX = containerWidth / 2;
+                const centerY = containerHeight / 2;
+                const distance3D = 8;
+                
+                // Project current 3D position to 2D (optimized inline calculation)
+                const projectedScale = scale / (1 + flowZ / distance3D);
+                const projX = centerX + flowX * projectedScale;
+                const projY = centerY - flowY * projectedScale;
+                
+                // Calculate distance from mouse in screen space (optimized)
+                const dx = projX - this.mouseX;
+                const dy = projY - this.mouseY;
+                const distSquared = dx * dx + dy * dy;
+                const mouseRadiusSquared = this.mouseRadius * this.mouseRadius;
+                
+                // Apply pinch effect if within mouse radius - particles move TOWARD cursor
+                if (distSquared < mouseRadiusSquared && distSquared > 0) {
+                    // Fast distance calculation (avoid sqrt when possible)
+                    const distance = Math.sqrt(distSquared);
+                    
+                    // Normalize distance (0 at center, 1 at edge)
+                    const normalizedDist = distance / this.mouseRadius;
+                    
+                    // Create wave-like pinch effect - particles move TOWARD cursor (congregate)
+                    // Optimized falloff calculation
+                    const oneMinusDist = 1 - normalizedDist;
+                    const influence = oneMinusDist * oneMinusDist * oneMinusDist; // Cubic for smoother
+                    const pinchStrength = this.mouseStrength * influence;
+                    
+                    // Pre-calculate direction components (avoid atan2 when possible)
+                    const invDistance = 1 / distance;
+                    const dirX = -dx * invDistance; // Toward cursor
+                    const dirY = -dy * invDistance; // Toward cursor
+                    
+                    // Convert screen space displacement to 3D space (optimized)
+                    const screenDisplacement = pinchStrength * 0.35;
+                    const zFactor = (1 + flowZ / distance3D);
+                    const invScaleZFactor = 1 / (scale * zFactor);
+                    
+                    // Apply displacement to 3D coordinates (optimized)
+                    flowX += dirX * screenDisplacement * invScaleZFactor;
+                    flowY += dirY * screenDisplacement * invScaleZFactor;
+                    flowZ -= pinchStrength * 0.3; // Pull particles back slightly for depth effect
+                }
+            }
             
             let pointType = 'normal';
             if (point.isSecondary) pointType = 'secondary';

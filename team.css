@@ -37,7 +37,7 @@ a {
     position: relative;
     width: 100%;
     height: 100px;
-    background: #0038f0; /* Blue background to match gradient start */
+    background: #002d72; /* Slightly brighter, soothing blue */
     z-index: 100;
 }
 
@@ -178,7 +178,7 @@ a {
 .title-subtext {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 23px;
-    color: #0038f0;
+    color: #002d72;
 }
 
 .typing-text {
@@ -188,7 +188,7 @@ a {
 .cursor {
     display: inline-block;
     animation: blink 1s infinite;
-    color: #0038f0;
+    color: #002d72;
 }
 
 @keyframes blink {
@@ -223,7 +223,7 @@ a {
 }
 
 .filter.active {
-    color: #0038f0;
+    color: #002d72;
     font-weight: 600;
 }
 
@@ -234,7 +234,7 @@ a {
 .divider {
     width: 100%;
     height: 1px;
-    background-color: #0038f0;
+    background-color: #002d72;
 }
 
 /* Team Grid */
@@ -242,6 +242,16 @@ a {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 40px;
+}
+
+/* Partners Grid - Center two cards */
+.partners-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .team-card {
@@ -301,7 +311,7 @@ a {
 .role {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 18px;
-    color: #0038f0;
+    color: #002d72;
 }
 
 .card-back {
@@ -403,7 +413,7 @@ a {
     left: 0;
     width: 100%;
     height: 1.2px;
-    background-color: rgba(0, 56, 240, 0.9);
+    background-color: rgba(0, 45, 114, 0.9);
     border-radius: 2px;
 }
 
@@ -411,6 +421,6 @@ a {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 16px;
     font-weight: 400;
-    color: #0038f0;
+    color: #002d72;
     margin: 0;
 }

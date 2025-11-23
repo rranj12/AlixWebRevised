@@ -24,12 +24,12 @@ a {
     position: relative;
     width: 100%;
     height: 100px;
-    background: #0038f0; /* Blue background to match gradient start */
+    background: #002d72; /* Slightly brighter, soothing blue */
     z-index: 100;
 }
 
 .desktop {
-    background: linear-gradient(to bottom, #0038f0 0%, #ffffff 100%);
+    background: linear-gradient(to bottom, #002d72 0%, #ffffff 100%);
     position: relative;
     width: 100%;
     min-height: 250vh; /* Increased to accommodate grid and more scrolling */
@@ -235,7 +235,7 @@ a {
 .content-box {
     width: 569px;
     height: 461px;
-    background-color: rgba(0, 56, 240, 0.35);
+    background-color: rgba(0, 45, 114, 0.35);
 }
 
 .box-left {
@@ -274,7 +274,7 @@ a {
 
 /* Spotlight Box - Individual grid item */
 .spotlight-box {
-    background-color: rgba(0, 56, 240, 0.35);
+    background-color: rgba(0, 45, 114, 0.35);
     border-radius: 24px; /* More rounded corners */
     padding: 40px;
     display: flex;
@@ -286,7 +286,7 @@ a {
 
 .spotlight-box:hover {
     transform: translateY(-5px);
-    background-color: rgba(0, 56, 240, 0.45);
+    background-color: rgba(0, 45, 114, 0.45);
 }
 
 /* Bottom Content - Spotlight boxes */
@@ -462,7 +462,7 @@ a {
     left: 0;
     width: 100%;
     height: 1.2px;
-    background-color: rgba(0, 56, 240, 0.9);
+    background-color: rgba(0, 45, 114, 0.9);
     border-radius: 2px;
 }
 
@@ -470,6 +470,6 @@ a {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 16px;
     font-weight: 400;
-    color: #0038f0;
+    color: #002d72;
     margin: 0;
 }

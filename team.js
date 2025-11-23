@@ -61,12 +61,27 @@
                 
                 const filterText = filter.textContent.trim();
                 const cards = document.querySelectorAll('.team-card');
+                
                 cards.forEach(card => {
                     const role = card.getAttribute('data-role');
-                    if (filterText === 'All' || role === filterText) {
-                        card.style.display = '';
+                    let shouldShow = false;
+                    
+                    if (filterText === 'All') {
+                        shouldShow = true;
+                    } else if (filterText.toLowerCase() === 'partners') {
+                        // Show cards with "Partner" role when "Partners" filter is clicked
+                        shouldShow = role === 'Partner';
+                    } else {
+                        // For other filters, match exactly (case-insensitive)
+                        shouldShow = role.toLowerCase() === filterText.toLowerCase();
+                    }
+                    
+                    if (shouldShow) {
+                        card.style.display = ''; // Remove inline style to use CSS grid
+                        card.style.visibility = 'visible';
                     } else {
                         card.style.display = 'none';
+                        card.style.visibility = 'hidden';
                     }
                 });
             });
