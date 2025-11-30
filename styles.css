@@ -24,15 +24,15 @@ a {
     position: relative;
     width: 100%;
     height: 100px;
-    background: #002d72; /* Slightly brighter, soothing blue */
+    background: rgba(135, 206, 250, 1); /* Light blue matching glass effect */
     z-index: 100;
 }
 
 .desktop {
-    background: linear-gradient(to bottom, #002d72 0%, #ffffff 100%);
+    background: #ffffff; /* White background */
     position: relative;
     width: 100%;
-    min-height: 250vh; /* Increased to accommodate grid and more scrolling */
+    min-height: 400vh; /* Increased to accommodate more boxes and scrolling */
     padding-bottom: 200px;
     overflow: hidden;
     margin-top: 0; /* Start right after header */
@@ -195,17 +195,15 @@ a {
     font-size: 72px;
     font-weight: 500;
     line-height: 84px;
-    color: white;
+    color: rgba(135, 206, 250, 1); /* Light blue matching glass effect */
     margin: 0 0 1.5rem 0;
     text-align: center;
     white-space: pre-line;
 }
 
 .hero-title em {
-    font-style: normal;
-    font-family: 'Great Vibes', cursive;
-    font-weight: 400;
-    font-size: 1.5em; /* Make it larger than the base font */
+    font-style: italic;
+    font-family: 'IBM Plex Sans JP', sans-serif;
 }
 
 /* Hero Subtitle - Smaller descriptive text */
@@ -214,7 +212,7 @@ a {
     font-size: 18px;
     font-weight: 400;
     line-height: 1.5;
-    color: white;
+    color: rgba(135, 206, 250, 1); /* Light blue matching glass effect */
     margin: 0 auto;
     text-align: center;
     max-width: 1200px;
@@ -235,7 +233,7 @@ a {
 .content-box {
     width: 569px;
     height: 461px;
-    background-color: rgba(0, 45, 114, 0.35);
+    background-color: rgba(135, 206, 250, 0.35);
 }
 
 .box-left {
@@ -249,20 +247,22 @@ a {
 /* Spotlight Container - Grid layout */
 .spotlight-container {
     position: absolute;
-    left: 60px;
-    right: 60px;
+    left: 80px;
+    right: 80px;
     top: 110vh; /* Position higher up */
     z-index: 2;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 30px;
-    max-width: 1400px;
-    margin: 0 auto;
+    grid-template-rows: auto;
+    gap: 15px; /* Consistent spacing between boxes and edges */
+    max-width: 100%;
+    width: calc(100% - 160px);
+    margin: 0;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease, transform 0.8s ease;
     pointer-events: none;
+    padding-bottom: 400px; /* Space for fading boxes */
 }
 
 .spotlight-container.visible {
@@ -274,19 +274,111 @@ a {
 
 /* Spotlight Box - Individual grid item */
 .spotlight-box {
-    background-color: rgba(0, 45, 114, 0.35);
-    border-radius: 24px; /* More rounded corners */
+    background-color: rgba(135, 206, 250, 0.15); /* Light blue with glass effect */
+    backdrop-filter: blur(10px); /* Glass effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border: 1px solid rgba(135, 206, 250, 0.2); /* Subtle border for glass effect */
+    border-radius: 1%; /* 1% rounded corners */
     padding: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 300px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 4px 6px rgba(135, 206, 250, 0.1); /* Subtle shadow for depth */
 }
 
 .spotlight-box:hover {
     transform: translateY(-5px);
-    background-color: rgba(0, 45, 114, 0.45);
+    background-color: rgba(135, 206, 250, 0.25);
+    box-shadow: 0 8px 12px rgba(135, 206, 250, 0.15);
+}
+
+/* First 6 boxes - different shapes while maintaining 2-row grid perimeter */
+/* Progressively lighter from top to bottom */
+.spotlight-box.box-1 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3; /* Tall - spans both rows */
+    min-height: 600px;
+    background-color: rgba(135, 206, 250, 0.18); /* Top row - slightly darker */
+}
+
+.spotlight-box.box-2 {
+    grid-column: 2 / 4;
+    grid-row: 1 / 2; /* Wide - spans 2 columns, row 1 */
+    min-height: 280px;
+    background-color: rgba(135, 206, 250, 0.18); /* Top row - slightly darker */
+}
+
+.spotlight-box.box-3 {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3; /* Small square, row 2 */
+    min-height: 300px;
+    background-color: rgba(135, 206, 250, 0.16); /* Second row - lighter */
+}
+
+.spotlight-box.box-4 {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3; /* Small square, row 2 */
+    min-height: 300px;
+    background-color: rgba(135, 206, 250, 0.16); /* Second row - lighter */
+}
+
+.spotlight-box.box-5 {
+    grid-column: 1 / 3;
+    grid-row: 3 / 4; /* Wide - spans 2 columns, row 3 */
+    min-height: 280px;
+    background-color: rgba(135, 206, 250, 0.14); /* Third row - even lighter */
+}
+
+.spotlight-box.box-6 {
+    grid-column: 3 / 4;
+    grid-row: 3 / 5; /* Tall - spans 2 rows */
+    min-height: 600px;
+    background-color: rgba(135, 206, 250, 0.14); /* Third row - even lighter */
+}
+
+/* Additional boxes that fade into footer - multi-shaped */
+/* Progressively lighter as they go down */
+.spotlight-box.box-7 {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+    min-height: 300px;
+    background-color: rgba(135, 206, 250, 0.12); /* Fourth row - lighter */
+}
+
+.spotlight-box.box-8 {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+    min-height: 300px;
+    background-color: rgba(135, 206, 250, 0.12); /* Fourth row - lighter */
+}
+
+.spotlight-box.box-9 {
+    grid-column: 1 / 2;
+    grid-row: 5 / 6;
+    min-height: 220px;
+    background-color: rgba(135, 206, 250, 0.10); /* Fifth row - even lighter */
+}
+
+.spotlight-box.box-10 {
+    grid-column: 2 / 4;
+    grid-row: 5 / 6;
+    min-height: 220px;
+    background-color: rgba(135, 206, 250, 0.10); /* Fifth row - even lighter */
+}
+
+.spotlight-box.box-11 {
+    grid-column: 1 / 3;
+    grid-row: 6 / 7;
+    min-height: 200px;
+    background-color: rgba(135, 206, 250, 0.08); /* Sixth row - lightest */
+}
+
+.spotlight-box.box-12 {
+    grid-column: 3 / 4;
+    grid-row: 6 / 7;
+    min-height: 200px;
+    background-color: rgba(135, 206, 250, 0.08); /* Sixth row - lightest */
 }
 
 /* Bottom Content - Spotlight boxes */
@@ -462,7 +554,7 @@ a {
     left: 0;
     width: 100%;
     height: 1.2px;
-    background-color: rgba(0, 45, 114, 0.9);
+    background-color: rgba(135, 206, 250, 0.9);
     border-radius: 2px;
 }
 
@@ -470,6 +562,6 @@ a {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 16px;
     font-weight: 400;
-    color: #002d72;
+    color: rgba(135, 206, 250, 1);
     margin: 0;
 }

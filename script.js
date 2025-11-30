@@ -263,15 +263,14 @@ class FlowingPointCloud {
         const normalizedY = y / containerHeight; // 0 = top, 1 = bottom
         const topBrightnessBoost = (1 - normalizedY) * 0.4; // Boost brightness at top
         
-        // White particles - brighter overall, especially at top
-        const baseBrightness = Math.floor(finalIntensity * 180) + 75; // Range: 75 to 255 (brighter)
-        const brightness = Math.min(255, baseBrightness + Math.floor(topBrightnessBoost * 180));
-        this.ctx.fillStyle = `rgb(${brightness}, ${brightness}, ${brightness})`;
+        // Light blue particles - matching glass effect (sky blue)
+        // Keep consistent light blue color matching glass effect
+        this.ctx.fillStyle = 'rgba(135, 206, 250, 0.8)';
         
-        // Higher opacity for better visibility, especially at top
-        const baseAlpha = 0.7;
-        const topAlphaBoost = (1 - normalizedY) * 0.2; // More opaque at top
-        this.ctx.globalAlpha = Math.min(1.0, baseAlpha + topAlphaBoost);
+        // Opacity for particles - adjust based on intensity for depth
+        const baseAlpha = 0.6;
+        const intensityAlpha = finalIntensity * 0.4;
+        this.ctx.globalAlpha = Math.min(1.0, baseAlpha + intensityAlpha);
         
         // Draw point
         this.ctx.beginPath();
@@ -462,13 +461,13 @@ document.addEventListener('DOMContentLoaded', function() {
     contentBoxes.forEach(box => {
         box.addEventListener('mouseenter', function() {
             this.style.transition = 'background-color 0.3s ease, transform 0.3s ease';
-            this.style.backgroundColor = 'rgba(0, 56, 240, 0.5)';
+            this.style.backgroundColor = 'rgba(135, 206, 250, 0.5)';
             this.style.transform = 'translateY(-5px)';
             this.style.cursor = 'pointer';
         });
         
         box.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'rgba(0, 56, 240, 0.35)';
+            this.style.backgroundColor = 'rgba(135, 206, 250, 0.35)';
             this.style.transform = 'translateY(0)';
         });
         
