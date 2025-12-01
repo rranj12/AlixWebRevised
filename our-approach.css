@@ -35,7 +35,7 @@ a {
     position: relative;
     width: 100%;
     height: 100px;
-    background: rgba(135, 206, 250, 1); /* Light blue matching glass effect */
+    background: #1F1A5E; /* Dark purple-blue glass effect */
     z-index: 100;
 }
 
@@ -273,7 +273,7 @@ a {
 
 /* Links */
 .link-blue {
-    color: rgba(135, 206, 250, 1);
+    color: #1F1A5E;
     text-decoration: underline;
     text-decoration-skip-ink: none;
     text-underline-position: from-font;
@@ -479,7 +479,7 @@ a {
     left: 0;
     width: 100%;
     height: 1.2px;
-    background-color: rgba(135, 206, 250, 0.9);
+    background-color: rgba(31, 26, 94, 0.9);
     border-radius: 2px;
 }
 
@@ -487,6 +487,6 @@ a {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 16px;
     font-weight: 400;
-    color: rgba(135, 206, 250, 1);
+    color: #1F1A5E;
     margin: 0;
 }

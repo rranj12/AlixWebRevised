@@ -263,9 +263,9 @@ class FlowingPointCloud {
         const normalizedY = y / containerHeight; // 0 = top, 1 = bottom
         const topBrightnessBoost = (1 - normalizedY) * 0.4; // Boost brightness at top
         
-        // Light blue particles - matching glass effect (sky blue)
-        // Keep consistent light blue color matching glass effect
-        this.ctx.fillStyle = 'rgba(135, 206, 250, 0.8)';
+        // Dark purple-blue particles - matching glass effect (#1F1A5E)
+        // Keep consistent color matching glass effect
+        this.ctx.fillStyle = 'rgba(31, 26, 94, 0.8)';
         
         // Opacity for particles - adjust based on intensity for depth
         const baseAlpha = 0.6;
@@ -461,13 +461,13 @@ document.addEventListener('DOMContentLoaded', function() {
     contentBoxes.forEach(box => {
         box.addEventListener('mouseenter', function() {
             this.style.transition = 'background-color 0.3s ease, transform 0.3s ease';
-            this.style.backgroundColor = 'rgba(135, 206, 250, 0.5)';
+            this.style.backgroundColor = 'rgba(31, 26, 94, 0.5)';
             this.style.transform = 'translateY(-5px)';
             this.style.cursor = 'pointer';
         });
         
         box.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'rgba(135, 206, 250, 0.35)';
+            this.style.backgroundColor = 'rgba(31, 26, 94, 0.35)';
             this.style.transform = 'translateY(0)';
         });
         

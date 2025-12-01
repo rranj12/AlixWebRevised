@@ -24,7 +24,7 @@ a {
     position: relative;
     width: 100%;
     height: 100px;
-    background: rgba(135, 206, 250, 1); /* Light blue matching glass effect */
+    background: #1F1A5E; /* Dark purple-blue glass effect */
     z-index: 100;
 }
 
@@ -195,7 +195,7 @@ a {
     font-size: 72px;
     font-weight: 500;
     line-height: 84px;
-    color: rgba(135, 206, 250, 1); /* Light blue matching glass effect */
+    color: #1F1A5E; /* Dark purple-blue glass effect */
     margin: 0 0 1.5rem 0;
     text-align: center;
     white-space: pre-line;
@@ -212,7 +212,7 @@ a {
     font-size: 18px;
     font-weight: 400;
     line-height: 1.5;
-    color: rgba(135, 206, 250, 1); /* Light blue matching glass effect */
+    color: #1F1A5E; /* Dark purple-blue glass effect */
     margin: 0 auto;
     text-align: center;
     max-width: 1200px;
@@ -233,7 +233,7 @@ a {
 .content-box {
     width: 569px;
     height: 461px;
-    background-color: rgba(135, 206, 250, 0.35);
+    background-color: rgba(31, 26, 94, 0.35);
 }
 
 .box-left {
@@ -274,23 +274,23 @@ a {
 
 /* Spotlight Box - Individual grid item */
 .spotlight-box {
-    background-color: rgba(135, 206, 250, 0.15); /* Light blue with glass effect */
+    background-color: rgba(31, 26, 94, 0.15); /* Dark purple-blue with glass effect */
     backdrop-filter: blur(10px); /* Glass effect */
     -webkit-backdrop-filter: blur(10px); /* Safari support */
-    border: 1px solid rgba(135, 206, 250, 0.2); /* Subtle border for glass effect */
+    border: 1px solid rgba(31, 26, 94, 0.2); /* Subtle border for glass effect */
     border-radius: 1%; /* 1% rounded corners */
     padding: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
-    box-shadow: 0 4px 6px rgba(135, 206, 250, 0.1); /* Subtle shadow for depth */
+    box-shadow: 0 4px 6px rgba(31, 26, 94, 0.1); /* Subtle shadow for depth */
 }
 
 .spotlight-box:hover {
     transform: translateY(-5px);
-    background-color: rgba(135, 206, 250, 0.25);
-    box-shadow: 0 8px 12px rgba(135, 206, 250, 0.15);
+    background-color: rgba(31, 26, 94, 0.25);
+    box-shadow: 0 8px 12px rgba(31, 26, 94, 0.15);
 }
 
 /* First 6 boxes - different shapes while maintaining 2-row grid perimeter */
@@ -299,42 +299,42 @@ a {
     grid-column: 1 / 2;
     grid-row: 1 / 3; /* Tall - spans both rows */
     min-height: 600px;
-    background-color: rgba(135, 206, 250, 0.18); /* Top row - slightly darker */
+    background-color: rgba(31, 26, 94, 0.18); /* Top row - slightly darker */
 }
 
 .spotlight-box.box-2 {
     grid-column: 2 / 4;
     grid-row: 1 / 2; /* Wide - spans 2 columns, row 1 */
     min-height: 280px;
-    background-color: rgba(135, 206, 250, 0.18); /* Top row - slightly darker */
+    background-color: rgba(31, 26, 94, 0.18); /* Top row - slightly darker */
 }
 
 .spotlight-box.box-3 {
     grid-column: 2 / 3;
     grid-row: 2 / 3; /* Small square, row 2 */
     min-height: 300px;
-    background-color: rgba(135, 206, 250, 0.16); /* Second row - lighter */
+    background-color: rgba(31, 26, 94, 0.16); /* Second row - lighter */
 }
 
 .spotlight-box.box-4 {
     grid-column: 3 / 4;
     grid-row: 2 / 3; /* Small square, row 2 */
     min-height: 300px;
-    background-color: rgba(135, 206, 250, 0.16); /* Second row - lighter */
+    background-color: rgba(31, 26, 94, 0.16); /* Second row - lighter */
 }
 
 .spotlight-box.box-5 {
     grid-column: 1 / 3;
     grid-row: 3 / 4; /* Wide - spans 2 columns, row 3 */
     min-height: 280px;
-    background-color: rgba(135, 206, 250, 0.14); /* Third row - even lighter */
+    background-color: rgba(31, 26, 94, 0.14); /* Third row - even lighter */
 }
 
 .spotlight-box.box-6 {
     grid-column: 3 / 4;
     grid-row: 3 / 5; /* Tall - spans 2 rows */
     min-height: 600px;
-    background-color: rgba(135, 206, 250, 0.14); /* Third row - even lighter */
+    background-color: rgba(31, 26, 94, 0.14); /* Third row - even lighter */
 }
 
 /* Additional boxes that fade into footer - multi-shaped */
@@ -343,42 +343,42 @@ a {
     grid-column: 1 / 2;
     grid-row: 4 / 5;
     min-height: 300px;
-    background-color: rgba(135, 206, 250, 0.12); /* Fourth row - lighter */
+    background-color: rgba(31, 26, 94, 0.12); /* Fourth row - lighter */
 }
 
 .spotlight-box.box-8 {
     grid-column: 2 / 3;
     grid-row: 4 / 5;
     min-height: 300px;
-    background-color: rgba(135, 206, 250, 0.12); /* Fourth row - lighter */
+    background-color: rgba(31, 26, 94, 0.12); /* Fourth row - lighter */
 }
 
 .spotlight-box.box-9 {
     grid-column: 1 / 2;
     grid-row: 5 / 6;
     min-height: 220px;
-    background-color: rgba(135, 206, 250, 0.10); /* Fifth row - even lighter */
+    background-color: rgba(31, 26, 94, 0.10); /* Fifth row - even lighter */
 }
 
 .spotlight-box.box-10 {
     grid-column: 2 / 4;
     grid-row: 5 / 6;
     min-height: 220px;
-    background-color: rgba(135, 206, 250, 0.10); /* Fifth row - even lighter */
+    background-color: rgba(31, 26, 94, 0.10); /* Fifth row - even lighter */
 }
 
 .spotlight-box.box-11 {
     grid-column: 1 / 3;
     grid-row: 6 / 7;
     min-height: 200px;
-    background-color: rgba(135, 206, 250, 0.08); /* Sixth row - lightest */
+    background-color: rgba(31, 26, 94, 0.08); /* Sixth row - lightest */
 }
 
 .spotlight-box.box-12 {
     grid-column: 3 / 4;
     grid-row: 6 / 7;
     min-height: 200px;
-    background-color: rgba(135, 206, 250, 0.08); /* Sixth row - lightest */
+    background-color: rgba(31, 26, 94, 0.08); /* Sixth row - lightest */
 }
 
 /* Bottom Content - Spotlight boxes */
@@ -554,7 +554,7 @@ a {
     left: 0;
     width: 100%;
     height: 1.2px;
-    background-color: rgba(135, 206, 250, 0.9);
+    background-color: rgba(31, 26, 94, 0.9);
     border-radius: 2px;
 }
 
@@ -562,6 +562,6 @@ a {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 16px;
     font-weight: 400;
-    color: rgba(135, 206, 250, 1);
+    color: #1F1A5E;
     margin: 0;
 }
