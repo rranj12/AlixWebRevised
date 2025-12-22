@@ -71,17 +71,25 @@
                     } else if (filterText.toLowerCase() === 'partners') {
                         // Show cards with "Partner" role when "Partners" filter is clicked
                         shouldShow = role === 'Partner';
+                    } else if (filterText.toLowerCase() === 'residents') {
+                        // Show cards with "Resident" role when "Residents" filter is clicked
+                        shouldShow = role === 'Resident';
+                    } else if (filterText.toLowerCase() === 'advisory') {
+                        // Show cards with "Advisory" role when "Advisory" filter is clicked
+                        shouldShow = role === 'Advisory';
                     } else {
                         // For other filters, match exactly (case-insensitive)
                         shouldShow = role.toLowerCase() === filterText.toLowerCase();
                     }
                     
                     if (shouldShow) {
-                        card.style.display = ''; // Remove inline style to use CSS grid
-                        card.style.visibility = 'visible';
+                        card.style.removeProperty('display');
+                        card.style.removeProperty('visibility');
+                        card.classList.remove('hidden');
                     } else {
                         card.style.display = 'none';
                         card.style.visibility = 'hidden';
+                        card.classList.add('hidden');
                     }
                 });
             });

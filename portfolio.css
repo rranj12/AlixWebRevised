@@ -185,7 +185,7 @@ a {
 /* Title */
 .title {
     position: absolute;
-    top: 148px;
+    top: 110px;
     left: 50%;
     transform: translateX(-50%);
     width: 869px;
@@ -203,7 +203,7 @@ a {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 23px;
     color: #011b31;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 /* Logo Row */
