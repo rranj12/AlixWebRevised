@@ -508,12 +508,77 @@ document.addEventListener('DOMContentLoaded', function() {
     const spotlightContainer = document.querySelector('.spotlight-container');
     const backgroundImage = document.querySelector('.scroll-background-image');
     const particleCanvas = document.getElementById('particle-canvas');
+    const fadeTop = document.querySelector('.scroll-fade-top');
+    const fadeBottom = document.querySelector('.scroll-fade-bottom');
+    const fadeLeft = document.querySelector('.scroll-fade-left');
+    const fadeRight = document.querySelector('.scroll-fade-right');
     
     if (spotlightContainer) {
         // Initial state - hidden on page load
         spotlightContainer.classList.remove('visible');
         if (backgroundImage) {
             backgroundImage.classList.remove('visible');
+        }
+        
+        // Dynamic scroll fade effect
+        function updateScrollFades() {
+            if (!spotlightContainer.classList.contains('visible')) {
+                // Tabs not visible, hide all fades
+                if (fadeTop) fadeTop.classList.remove('visible');
+                if (fadeBottom) fadeBottom.classList.remove('visible');
+                if (fadeLeft) fadeLeft.classList.remove('visible');
+                if (fadeRight) fadeRight.classList.remove('visible');
+                return;
+            }
+            
+            const containerRect = spotlightContainer.getBoundingClientRect();
+            const footer = document.querySelector('.site-footer');
+            const viewportHeight = window.innerHeight;
+            const viewportWidth = window.innerWidth;
+            const containerTop = containerRect.top;
+            const containerBottom = containerRect.bottom;
+            const containerLeft = containerRect.left;
+            const containerRight = containerRect.right;
+            
+            // Calculate fade-out based on footer proximity
+            let fadeOpacity = 1;
+            if (footer) {
+                const footerRect = footer.getBoundingClientRect();
+                const footerTop = footerRect.top;
+                const distanceToFooter = footerTop - viewportHeight;
+                // Start fading out when footer is within 600px of viewport bottom
+                const fadeStartDistance = 600;
+                if (distanceToFooter < fadeStartDistance) {
+                    // Fade out gradually as footer approaches
+                    fadeOpacity = Math.max(0, distanceToFooter / fadeStartDistance);
+                }
+            }
+            
+            // Apply opacity to all fade elements
+            const applyFadeOpacity = (element, shouldShow) => {
+                if (element) {
+                    if (shouldShow && fadeOpacity > 0) {
+                        element.style.opacity = fadeOpacity;
+                        element.classList.add('visible');
+                    } else {
+                        element.style.opacity = '0';
+                        element.classList.remove('visible');
+                    }
+                }
+            };
+            
+            // Show top fade if container top is above viewport top
+            const topVisible = containerTop < 0;
+            applyFadeOpacity(fadeTop, topVisible);
+            
+            // Show bottom fade if container bottom is below viewport bottom
+            const bottomVisible = containerBottom > viewportHeight;
+            applyFadeOpacity(fadeBottom, bottomVisible);
+            
+            // Only show left and right fades when BOTH top and bottom are visible
+            const sidesVisible = topVisible && bottomVisible;
+            applyFadeOpacity(fadeLeft, sidesVisible);
+            applyFadeOpacity(fadeRight, sidesVisible);
         }
         
         // Use IntersectionObserver only - completely eliminates scroll listeners
@@ -540,12 +605,28 @@ document.addEventListener('DOMContentLoaded', function() {
                     particleCanvas.style.transition = 'opacity 0.8s ease';
                 }
             }
+            updateScrollFades();
         }, {
             threshold: 0,
             rootMargin: '-100px 0px 0px 0px' // Show when scrolled down 100px
         });
         
         observer.observe(spotlightContainer);
+        
+        // Update fades on scroll - only when tabs are visible
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    updateScrollFades();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+        
+        // Initial update
+        updateScrollFades();
     }
     
     // Removed smooth scroll to eliminate lag

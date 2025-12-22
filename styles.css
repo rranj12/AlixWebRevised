@@ -299,7 +299,7 @@ a {
     border-radius: 20px 20px 20px 20px; /* Explicitly rounded corners on all sides */
     clip-path: inset(0 round 20px); /* Ensure all corners are rounded, including bottom */
     opacity: 0;
-    transition: opacity 0.8s ease;
+    transition: opacity 2.5s ease; /* Even slower fade-in effect */
     pointer-events: none;
     overflow: hidden; /* Ensure rounded corners are visible */
 }
@@ -326,7 +326,7 @@ a {
     margin: 0;
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition: opacity 2.5s ease, transform 2.5s ease; /* Even slower fade-in effect */
     pointer-events: none;
     padding-bottom: 0; /* No extra padding - tabs should fit within background */
     overflow: hidden; /* Clip tabs that extend past background */
@@ -338,6 +338,76 @@ a {
     pointer-events: auto;
 }
 
+/* Dynamic fade/blur overlays - created via JavaScript */
+.scroll-fade-top,
+.scroll-fade-bottom,
+.scroll-fade-left,
+.scroll-fade-right {
+    position: fixed;
+    z-index: 3; /* Above boxes */
+    pointer-events: none; /* Allow scrolling through */
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.scroll-fade-top,
+.scroll-fade-bottom {
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 80px; /* Smaller, subtle blur */
+}
+
+.scroll-fade-left,
+.scroll-fade-right {
+    top: 0;
+    bottom: 0;
+    width: 100px; /* Smaller, subtle blur on sides */
+    height: 100%;
+}
+
+.scroll-fade-top {
+    top: 0;
+    background: linear-gradient(to bottom, rgba(245, 237, 224, 0.4) 0%, rgba(245, 237, 224, 0.15) 50%, transparent 100%);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    mask-image: radial-gradient(ellipse 100% 80px at center top, black 0%, black 60%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 100% 80px at center top, black 0%, black 60%, transparent 100%);
+}
+
+.scroll-fade-bottom {
+    bottom: 0;
+    background: linear-gradient(to top, rgba(245, 237, 224, 0.4) 0%, rgba(245, 237, 224, 0.15) 50%, transparent 100%);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    mask-image: radial-gradient(ellipse 100% 80px at center bottom, black 0%, black 60%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 100% 80px at center bottom, black 0%, black 60%, transparent 100%);
+}
+
+.scroll-fade-left {
+    left: 0;
+    background: linear-gradient(to right, rgba(245, 237, 224, 0.4) 0%, rgba(245, 237, 224, 0.15) 50%, transparent 100%);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    mask-image: radial-gradient(ellipse 100px 100% at left center, black 0%, black 60%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 100px 100% at left center, black 0%, black 60%, transparent 100%);
+}
+
+.scroll-fade-right {
+    right: 0;
+    background: linear-gradient(to left, rgba(245, 237, 224, 0.4) 0%, rgba(245, 237, 224, 0.15) 50%, transparent 100%);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    mask-image: radial-gradient(ellipse 100px 100% at right center, black 0%, black 60%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 100px 100% at right center, black 0%, black 60%, transparent 100%);
+}
+
+.scroll-fade-top.visible,
+.scroll-fade-bottom.visible,
+.scroll-fade-left.visible,
+.scroll-fade-right.visible {
+    /* Opacity controlled by JavaScript for smooth fade-out near footer */
+}
 
 /* Spotlight Box - Individual grid item */
 .spotlight-box {
@@ -693,23 +763,7 @@ a {
 /* Overlay removed - background image is fully opaque */
 
 .footer-divider {
-    position: absolute;
-    top: 0;
-    left: 60px;
-    right: 60px;
-    height: 2.4px;
-    z-index: 2; /* Above overlay */
-}
-
-.footer-divider::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 1.2px;
-    background-color: rgba(1, 27, 49, 0.9);
-    border-radius: 2px;
+    display: none; /* Footer divider line removed */
 }
 
 .footer-text {
