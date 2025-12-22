@@ -444,6 +444,7 @@ a {
     grid-row: 1 / 4; /* Extended to reach top of box below */
     min-height: 580px;
     background-color: rgba(1, 27, 49, 0.38); /* Top row - less transparent */
+    border-top: 2px solid #F5EDE0; /* Ensure top border is visible */
 }
 
 .spotlight-box.box-3 {
