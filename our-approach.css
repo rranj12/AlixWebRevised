@@ -294,7 +294,7 @@ a {
 
 /* Footer */
 .site-footer {
-    background: linear-gradient(to bottom, #3757c4 0%, #3757c4 80%, rgba(55, 87, 196, 0) 100%);
+    background-color: #3757c4;
     color: #FCF7F0;
     padding: 60px 0 30px;
     text-align: center;
@@ -316,9 +316,10 @@ a {
 
 .footer-social {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 16px;
     margin-bottom: 30px;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .social-icon {
