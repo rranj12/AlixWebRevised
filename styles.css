@@ -21,18 +21,44 @@ a {
     text-decoration: none;
 }
 
-/* Header Bar - Separate from content (like Novana) */
+/* Header Bar - Rounded purple bar on white background */
 .header-bar {
     position: relative;
     width: 100%;
     height: 100px;
     z-index: 100;
-    overflow: hidden; /* Ensure rotated background stays within bounds */
-    background-color: #3757c4;
+    overflow: visible;
+    background-color: transparent; /* Transparent background - no white bar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 40px;
 }
 
 .header-bar::after {
     display: none; /* Hide background image when using solid color background */
+}
+
+/* Purple rounded bar container */
+.header-bar::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 20px;
+    width: 100%;
+    height: 60px;
+    background-color: #3757c4; /* Purple color */
+    border-radius: 12px; /* Less curved but still rounded */
+    z-index: 0;
+}
+
+/* Inner wrapper for logo and navigation - positioned within purple bar */
+.header-bar > * {
+    position: relative;
+    z-index: 1;
 }
 
 /* Overlay removed - background image is fully opaque */
@@ -56,23 +82,20 @@ a {
     height: 100%;
     pointer-events: none;
     z-index: 0; /* Behind background image */
-    display: block;
+    display: none; /* Hidden - background dots removed */
 }
 
 /* Logo */
 .logo {
     position: absolute;
-    z-index: 2; /* Above overlay */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2; /* Above purple bar */
     font-family: 'Instrument Serif', serif;
     font-size: 48px;
     font-weight: 400;
     line-height: 1.2;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 5px;
-    width: 136px;
-    height: 89px;
-    color: #FCF7F0;
+    color: #FFFFFF !important; /* White text on purple */
     text-align: center;
     white-space: pre-wrap;
     margin: 0;
@@ -100,29 +123,13 @@ a {
 .logo:focus,
 .logo:active {
     text-decoration: none !important;
-    color: #FCF7F0;
+    color: #FFFFFF;
     opacity: 0.8;
 }
 
-/* Line separator */
+/* Line separator - hidden for rounded bar design */
 .line-container {
-    position: absolute;
-    z-index: 2; /* Above overlay */
-    top: 75px;
-    left: 60px;
-    right: 60px;
-    height: 2.4px;
-}
-
-.line-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 1.2px;
-    background-color: rgba(245, 237, 224, 0.9);
-    border-radius: 2px;
+    display: none;
 }
 
 .line-image {
@@ -138,69 +145,83 @@ a {
 /* Navigation */
 .navigation {
     position: absolute;
-    z-index: 2; /* Above overlay */
-    top: 26px;
-    left: 0;
-    right: 0;
-    height: 49px; /* Ensure it doesn't go past the line at 75px */
-    overflow: hidden;
+    left: 30px;
+    right: 30px;
+    z-index: 2; /* Above purple bar */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    flex-shrink: 0;
 }
 
 .nav-item {
-    position: absolute;
+    position: relative;
     font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     line-height: normal;
-    color: #FCF7F0;
+    color: #FFFFFF !important; /* White text on purple */
     margin: 0;
     cursor: pointer;
     transition: opacity 0.3s ease;
     text-decoration: none;
+    white-space: nowrap;
 }
 
 .nav-item:hover {
     opacity: 0.7;
 }
 
-.nav-approach {
-    left: 60px;
-    width: 186px;
-    height: 30px;
-}
-
-.nav-portfolio {
-    left: 240px;
-    width: 117px;
-    height: 30px;
-}
-
+.nav-approach,
+.nav-portfolio,
 .nav-team {
-    left: 380px;
-    width: 94px;
-    height: 30px;
+    position: relative;
+    width: auto;
+    height: auto;
+    margin-right: 30px;
 }
 
+/* Bios on the right */
 .nav-bios {
-    right: 60px;
-    text-align: right;
-    width: 94px;
-    height: 30px;
+    position: relative;
+    width: auto;
+    height: auto;
+    margin-left: auto;
+    margin-right: 0;
 }
 
 /* Hero Container - Centered like Novana */
 .hero-container {
     position: absolute;
-    top: 0;
+    top: 100px; /* Start right after header */
     left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 100px);
     display: flex;
     align-items: flex-start;
     justify-content: center;
     z-index: 2;
     padding: 0;
-    padding-top: 20vh;
+}
+
+/* Hero Content Box - Centered container with gradient extending to header */
+.hero-content-box {
+    max-width: 1200px;
+    width: calc(100% - 80px);
+    margin: 0 auto;
+    margin-top: -100px; /* Extend up to header */
+    padding: 80px 60px;
+    padding-top: 180px; /* Extra padding at top to account for extending to header */
+    background: linear-gradient(135deg, #FAFAFA 0%, #E5E5E5 50%, #F0F0F0 100%);
+    border-radius: 24px;
+    border-top-left-radius: 0; /* No rounded corner at top */
+    border-top-right-radius: 0; /* No rounded corner at top */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 1;
+    display: block;
+    min-height: 500px;
 }
 
 /* Hero Content - Full width layout */
@@ -209,7 +230,7 @@ a {
     text-align: center;
     position: relative;
     width: 100%;
-    padding: 0 80px;
+    padding: 0;
 }
 
 /* Hero Title - Large, bold, full-width heading */
@@ -245,7 +266,7 @@ a {
     text-align: center;
     max-width: 700px;
     width: 100%;
-    padding: 0 80px;
+    padding: 0;
     margin-bottom: 40px;
 }
 
