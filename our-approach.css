@@ -171,8 +171,56 @@ a {
 .content-wrapper {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 120px 80px 80px;
+    padding: 60px 80px 80px; /* Reduced top padding to bring image closer to header */
     flex: 1;
+}
+
+/* Header Image Slice - Above Definition */
+.header-image-slice {
+    width: 1200px;
+    height: 300px; /* 3x header bar height (100px * 3) */
+    max-width: 100%;
+    margin: 0 auto 35px; /* Reduced spacing - centered between header and definition */
+    background-image: url('background_image_9.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 12px; /* Matching header bar border-radius */
+    overflow: hidden; /* Ensure rounded corners are visible */
+}
+
+/* Invest Image Slice - Above How We Invest */
+.invest-image-slice {
+    width: 1200px;
+    height: 300px; /* 3x header bar height (100px * 3) */
+    max-width: 100%;
+    margin: 0 auto 20px; /* Reduced spacing - less margin */
+    background-image: url('background_image_10.png');
+    background-size: cover;
+    background-position: center center; /* Take slice from center of image */
+    background-repeat: no-repeat;
+    border-radius: 12px; /* Matching header bar border-radius */
+    overflow: hidden; /* Ensure rounded corners are visible */
+}
+
+/* Future Image Slice - Above The Future We're Building */
+.future-image-slice {
+    width: 1200px;
+    height: 300px; /* 3x header bar height (100px * 3) */
+    max-width: 100%;
+    margin: 0 auto 20px; /* Reduced spacing - less margin */
+    background-image: url('background_image_11.png');
+    background-size: cover;
+    background-position: center center; /* Take slice from center of image */
+    background-repeat: no-repeat;
+    border-radius: 12px; /* Matching header bar border-radius */
+    overflow: hidden; /* Ensure rounded corners are visible */
+}
+
+/* General class for future image slices - rounded corners */
+[class*="-image-slice"] {
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 /* Definition Section */
@@ -389,9 +437,19 @@ a {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
+    .header-image-slice,
+    .invest-image-slice,
+    .future-image-slice {
+        width: 100%;
+        height: 250px;
+    }
+    
+    .invest-image-slice {
+        margin-bottom: 15px; /* Reduced spacing on smaller screens */
+    }
     .content-wrapper {
         max-width: 100%;
-        padding: 120px 50px 80px;
+        padding: 50px 50px 80px; /* Reduced top padding to match desktop */
     }
     
     .definition-title {
@@ -412,8 +470,20 @@ a {
 }
 
 @media (max-width: 768px) {
+    .header-image-slice {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 25px; /* Reduced spacing */
+    }
+    
+    .invest-image-slice,
+    .future-image-slice {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 15px; /* Reduced spacing */
+    }
     .content-wrapper {
-        padding: 100px 30px 60px;
+        padding: 40px 30px 60px; /* Reduced top padding to match desktop */
     }
     
     .logo {
@@ -479,6 +549,22 @@ a {
 }
 
 @media (max-width: 480px) {
+    .content-wrapper {
+        padding: 30px 20px 40px; /* Reduced top padding */
+    }
+    
+    .header-image-slice {
+        width: 100%;
+        height: 150px;
+        margin-bottom: 20px; /* Reduced spacing */
+    }
+    
+    .invest-image-slice,
+    .future-image-slice {
+        width: 100%;
+        height: 150px;
+        margin-bottom: 12px; /* Reduced spacing */
+    }
     .content-wrapper {
         padding: 100px 20px 60px;
     }
