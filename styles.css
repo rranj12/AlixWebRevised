@@ -307,7 +307,7 @@ a {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background-color: #9DB5F5;
+    background-color: #3757c4; /* Matching header blue */
     transition: all 0.3s ease;
     flex-shrink: 0;
 }
@@ -355,9 +355,10 @@ a {
     right: 60px; /* Slightly wider than boxes (boxes are at 80px) */
     bottom: 240px; /* End above footer with space for rounded corners */
     z-index: 1; /* Above particle canvas (z-index: 0) but behind boxes (z-index: 2) */
-    background-color: #9DB5F5; /* Matching team page card background color */
+    background: linear-gradient(135deg, #FAFAFA 0%, #E5E5E5 50%, #F0F0F0 100%); /* Matching hero content box light gray gradient */
     border-radius: 20px 20px 20px 20px; /* Explicitly rounded corners on all sides */
     clip-path: inset(0 round 20px); /* Ensure all corners are rounded, including bottom */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Matching hero content box shadow */
     opacity: 0;
     transition: opacity 2.5s ease; /* Even slower fade-in effect */
     pointer-events: none;
@@ -462,12 +463,7 @@ a {
     -webkit-mask-image: radial-gradient(ellipse 100px 100% at right center, black 0%, black 60%, transparent 100%);
 }
 
-.scroll-fade-top.visible,
-.scroll-fade-bottom.visible,
-.scroll-fade-left.visible,
-.scroll-fade-right.visible {
-    /* Opacity controlled by JavaScript for smooth fade-out near footer */
-}
+/* Opacity for .scroll-fade-*.visible classes is controlled by JavaScript for smooth fade-out near footer */
 
 /* Spotlight Box - Individual grid item */
 .spotlight-box {
