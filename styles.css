@@ -603,25 +603,11 @@ a {
     background-color: rgba(1, 27, 49, 0.28); /* Sixth row - less transparent */
 }
 
-.spotlight-box.box-13 {
-    grid-column: 1 / 2;
-    grid-row: 8 / 10; /* Tall - spans 2 rows */
-    min-height: 500px;
-    background-color: rgba(1, 27, 49, 0.26); /* Seventh row - less transparent */
-}
-
-.spotlight-box.box-14 {
-    grid-column: 2 / 3;
-    grid-row: 8 / 9;
-    min-height: 240px;
-    background-color: rgba(1, 27, 49, 0.26); /* Seventh row - less transparent */
-}
-
+/* Boxes 13-15 removed to prevent cutoff - keeping exactly 6 rows */
+.spotlight-box.box-13,
+.spotlight-box.box-14,
 .spotlight-box.box-15 {
-    grid-column: 3 / 4;
-    grid-row: 8 / 9;
-    min-height: 240px;
-    background-color: rgba(1, 27, 49, 0.26); /* Seventh row - less transparent */
+    display: none !important;
 }
 
 

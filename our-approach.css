@@ -149,29 +149,22 @@ a {
     font-weight: 500;
 }
 
-.nav-approach {
-    left: 60px;
-    width: 186px;
-    height: 30px;
-}
-
-.nav-portfolio {
-    left: 240px;
-    width: 117px;
-    height: 30px;
-}
-
+.nav-approach,
+.nav-portfolio,
 .nav-team {
-    left: 380px;
-    width: 94px;
-    height: 30px;
+    position: relative;
+    width: auto;
+    height: auto;
+    margin-right: 30px;
 }
 
+/* Bios on the right */
 .nav-bios {
-    right: 60px;
-    text-align: right;
-    width: 94px;
-    height: 30px;
+    position: relative;
+    width: auto;
+    height: auto;
+    margin-left: auto;
+    margin-right: 0;
 }
 
 /* Main Content Wrapper */
