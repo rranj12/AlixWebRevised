@@ -351,8 +351,10 @@ a {
 .scroll-background-image {
     position: absolute;
     top: calc(110vh - 20px); /* Slightly above boxes (20px extension) */
-    left: 60px; /* Slightly wider than boxes (boxes are at 80px) */
-    right: 60px; /* Slightly wider than boxes (boxes are at 80px) */
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 80px); /* Matching hero box width */
+    max-width: 1200px; /* Matching hero box max-width */
     bottom: 240px; /* End above footer with space for rounded corners */
     z-index: 1; /* Above particle canvas (z-index: 0) but behind boxes (z-index: 2) */
     background: linear-gradient(135deg, #FAFAFA 0%, #E5E5E5 50%, #F0F0F0 100%); /* Matching hero content box light gray gradient */
@@ -373,29 +375,29 @@ a {
 /* Spotlight Container - Grid layout */
 .spotlight-container {
     position: absolute;
-    left: 80px;
-    right: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(30px); /* Center horizontally, offset vertically for animation */
+    width: 100%; /* Full width of background */
+    max-width: 1200px; /* Match background max-width */
     top: 110vh; /* Position higher up */
     bottom: calc(240px + 20px); /* Match background bottom (240px) plus some margin */
     z-index: 2;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
-    gap: 15px; /* Consistent spacing between boxes and edges */
-    max-width: 100%;
-    width: calc(100% - 160px);
+    gap: 15px; /* Gap between boxes - matches edge spacing */
     margin: 0;
+    padding: 0 15px; /* 15px padding on sides to match gap between boxes */
+    box-sizing: border-box;
     opacity: 0;
-    transform: translateY(30px);
     transition: opacity 2.5s ease, transform 2.5s ease; /* Even slower fade-in effect */
     pointer-events: none;
-    padding-bottom: 0; /* No extra padding - tabs should fit within background */
     overflow: hidden; /* Clip tabs that extend past background */
 }
 
 .spotlight-container.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0); /* Center horizontally, no vertical offset */
     pointer-events: auto;
 }
 
@@ -529,7 +531,7 @@ a {
     grid-row: 2 / 4; /* Tall - spans 2 rows */
     min-height: 580px;
     background-image: url('Background Images/background_image_3.png');
-    background-size: 150%; /* Zoomed in more */
+    background-size: 170%; /* Zoomed in more */
     background-position: center;
     background-repeat: no-repeat;
     background-color: rgba(1, 27, 49, 0.36); /* Fallback color */
