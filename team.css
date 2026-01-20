@@ -359,8 +359,9 @@ a {
     font-weight: 600;
     color: #000000;
     margin-bottom: 8px;
-    margin-top: 0;
+    margin-top: auto; /* Push name and role down to center them */
     text-align: center;
+    flex-shrink: 0;
 }
 
 .role {
@@ -368,6 +369,8 @@ a {
     font-size: 18px;
     color: #000000;
     text-align: center;
+    margin-bottom: 24px; /* Add space from bottom to center the text block */
+    flex-shrink: 0;
 }
 
 .card-back {
