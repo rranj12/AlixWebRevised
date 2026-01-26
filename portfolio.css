@@ -27,6 +27,8 @@ a {
 .portfolio {
     position: relative;
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     background-color: #FCF7F0;
     flex: 1;
     min-height: 2800px;
@@ -122,8 +124,8 @@ a {
 /* Navigation */
 .navigation {
     position: absolute;
-    left: 30px;
-    right: 30px;
+    left: 50px;
+    right: 50px;
     z-index: 2; /* Above purple bar */
     display: flex;
     align-items: center;
@@ -202,7 +204,7 @@ a {
 .filters {
     position: absolute;
     top: 280px;
-    left: 60px;
+    left: 50px;
     display: flex;
     gap: 32px;
 }
@@ -227,7 +229,8 @@ a {
     position: relative;
 }
 
-.filter.active::after {
+/* Active line only for non-dropdown filter buttons (like "All") */
+.filter.active:not(.filter-dropdown-btn)::after {
     content: '';
     position: absolute;
     bottom: -4px;
@@ -246,12 +249,34 @@ a {
 
 .filter-dropdown-btn {
     position: relative;
+    /* Ensure no borders or lines appear */
+    border: none !important;
+    outline: none;
+    box-shadow: none;
 }
 
+/* Dropdown buttons should only show the arrow, never a line */
 .filter-dropdown-btn::after {
     content: ' ▼';
     font-size: 14px;
     opacity: 0.7;
+    position: static !important; /* Reset position to avoid conflict */
+    bottom: auto !important;
+    left: auto !important;
+    width: auto !important;
+    height: auto !important;
+    background-color: transparent !important;
+}
+
+/* Ensure dropdown buttons never get the active line, even if they have active class */
+.filter-dropdown-btn.active::after {
+    content: ' ▼' !important;
+    position: static !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: auto !important;
+    height: auto !important;
+    background-color: transparent !important;
 }
 
 .dropdown-menu {
@@ -260,15 +285,27 @@ a {
     left: 0;
     margin-top: 8px;
     background: #FCF7F0;
-    border: 1px solid #bfbfbf;
+    border: none !important; /* No border by default to prevent glitch */
     border-radius: 4px;
     min-width: 150px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: none; /* No shadow when hidden */
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
-    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease, border 0.2s ease, box-shadow 0.2s ease;
     z-index: 1000;
+    /* Ensure no lines show when hidden */
+    pointer-events: none;
+}
+
+/* When dropdown is active, show menu with border */
+.filter-dropdown.active .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+    border: 1px solid #bfbfbf !important; /* Show border only when active */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Show shadow only when active */
 }
 
 .filter-dropdown.active .dropdown-menu {
@@ -379,8 +416,8 @@ a {
 .table {
     position: absolute;
     top: 360px;
-    left: 60px;
-    right: 60px;
+    left: 50px;
+    right: 50px;
     font-family: 'IBM Plex Sans', sans-serif;
     padding-bottom: 0;
 }
@@ -429,9 +466,14 @@ a {
 }
 
 .divider {
-    height: 1px;
-    background: linear-gradient(to right, rgba(157, 181, 245, 0.3) 0%, #bfbfbf 20%, #bfbfbf 100%);
-    margin: 12px 0 0 0;
+    display: none !important; /* Hide all divider lines */
+    height: 0 !important;
+    background: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
 }
 
 @media (max-width: 1200px) {
@@ -511,7 +553,9 @@ a {
     }
 
     .divider {
-        margin: 16px 0 0 0;
+        display: none !important; /* Hide dividers in media query too */
+        margin: 0 !important;
+        height: 0 !important;
     }
 }
 

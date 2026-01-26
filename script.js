@@ -613,17 +613,24 @@ document.addEventListener('DOMContentLoaded', function() {
         
         observer.observe(spotlightContainer);
         
-        // Update fades on scroll - only when tabs are visible
+        // Update fades on scroll - optimized for performance
         let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    updateScrollFades();
-                    ticking = false;
-                });
-                ticking = true;
+        let lastScrollY = window.scrollY;
+        const scrollHandler = () => {
+            const currentScrollY = window.scrollY;
+            // Only update if scroll position changed significantly (reduces calculations)
+            if (Math.abs(currentScrollY - lastScrollY) > 5) {
+                lastScrollY = currentScrollY;
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        updateScrollFades();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
             }
-        }, { passive: true });
+        };
+        window.addEventListener('scroll', scrollHandler, { passive: true });
         
         // Initial update
         updateScrollFades();

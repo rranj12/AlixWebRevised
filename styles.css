@@ -8,12 +8,17 @@
 html {
     zoom: 0.9; /* Scale entire page to 90% */
     background-color: #FCF7F0; /* Lighter cream background */
+    scroll-behavior: smooth; /* Smooth scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 body {
     font-family: 'IBM Plex Sans', sans-serif;
     overflow-x: hidden;
     background-color: #FCF7F0; /* Lighter cream background */
+    /* Improve scroll performance */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Remove underlines from all links by default */
@@ -69,8 +74,12 @@ a {
     width: 100%;
     min-height: 400vh; /* Increased to accommodate more boxes and scrolling */
     padding-bottom: 200px;
-    overflow: hidden;
+    overflow-x: hidden; /* Only hide horizontal overflow */
+    overflow-y: visible; /* Allow vertical scrolling */
     margin-top: 0; /* Start right after header */
+    /* Improve scroll performance */
+    will-change: scroll-position;
+    transform: translateZ(0); /* Force hardware acceleration */
 }
 
 /* Scientific Background Overlay - Canvas */
@@ -331,6 +340,8 @@ a {
     right: 60px;
     display: flex;
     justify-content: space-between;
+    /* Improve scroll performance */
+    transform: translateZ(0); /* Force hardware acceleration */
 }
 
 .content-box {
@@ -352,11 +363,13 @@ a {
     position: absolute;
     top: calc(110vh - 20px); /* Slightly above boxes (20px extension) */
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateZ(0); /* Hardware acceleration */
     width: calc(100% - 80px); /* Matching hero box width */
     max-width: 1200px; /* Matching hero box max-width */
     bottom: 240px; /* End above footer with space for rounded corners */
     z-index: 1; /* Above particle canvas (z-index: 0) but behind boxes (z-index: 2) */
+    /* Improve scroll performance */
+    will-change: opacity, transform;
     background: linear-gradient(135deg, #FAFAFA 0%, #E5E5E5 50%, #F0F0F0 100%); /* Matching hero content box light gray gradient */
     border-radius: 20px 20px 20px 20px; /* Explicitly rounded corners on all sides */
     clip-path: inset(0 round 20px); /* Ensure all corners are rounded, including bottom */
@@ -376,13 +389,15 @@ a {
 .spotlight-container {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%) translateY(30px); /* Center horizontally, offset vertically for animation */
+    transform: translateX(-50%) translateY(30px) translateZ(0); /* Center horizontally, offset vertically for animation, hardware acceleration */
     width: 100%; /* Full width of background */
     max-width: 1200px; /* Match background max-width */
     top: 110vh; /* Position higher up */
     bottom: calc(240px + 20px); /* Match background bottom (240px) plus some margin */
     z-index: 2;
     display: grid;
+    /* Improve scroll performance */
+    will-change: transform, opacity;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     gap: 15px; /* Gap between boxes - matches edge spacing */
@@ -411,6 +426,9 @@ a {
     pointer-events: none; /* Allow scrolling through */
     opacity: 0;
     transition: opacity 0.4s ease;
+    /* Improve scroll performance */
+    will-change: opacity;
+    transform: translateZ(0); /* Force hardware acceleration */
 }
 
 .scroll-fade-top,

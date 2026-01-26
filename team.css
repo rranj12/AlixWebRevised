@@ -175,12 +175,14 @@ a {
 /* Content */
 .content {
     flex: 1;
-    width: min(1188px, calc(100% - 86px));
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 120px 0 120px;
+    padding: 120px 40px 120px; /* Aligned with header bar padding */
     display: flex;
     flex-direction: column;
     gap: 64px;
+    box-sizing: border-box;
 }
 
 .hero {
@@ -429,8 +431,8 @@ a {
     }
 
     .content {
-        width: calc(100% - 48px);
-        padding: 80px 0 100px;
+        width: 100%;
+        padding: 80px 40px 100px; /* Aligned with header bar padding */
     }
 
     .title-text {
@@ -449,8 +451,8 @@ a {
 
 @media (max-width: 600px) {
     .content {
-        width: calc(100% - 40px);
-        padding: 64px 0 80px;
+        width: 100%;
+        padding: 64px 20px 80px; /* Smaller padding for mobile */
     }
 
     .filters {
