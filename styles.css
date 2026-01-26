@@ -7,7 +7,7 @@
 
 html {
     zoom: 0.9; /* Scale entire page to 90% */
-    background-color: #FCF7F0; /* Lighter cream background */
+    background-color: #F5F3F0; /* Light warm gray background */
     scroll-behavior: smooth; /* Smooth scrolling */
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
@@ -15,7 +15,7 @@ html {
 body {
     font-family: 'IBM Plex Sans', sans-serif;
     overflow-x: hidden;
-    background-color: #FCF7F0; /* Lighter cream background */
+    background-color: #F5F3F0; /* Light warm gray background */
     /* Improve scroll performance */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -69,7 +69,7 @@ a {
 /* Overlay removed - background image is fully opaque */
 
 .desktop {
-    background: #FCF7F0; /* Lighter cream background */
+    background: #F5F3F0; /* Light warm gray background */
     position: relative;
     width: 100%;
     min-height: 400vh; /* Increased to accommodate more boxes and scrolling */
@@ -154,8 +154,8 @@ a {
 /* Navigation */
 .navigation {
     position: absolute;
-    left: 30px;
-    right: 30px;
+    left: 50px;
+    right: 50px;
     z-index: 2; /* Above purple bar */
     display: flex;
     align-items: center;
@@ -222,7 +222,11 @@ a {
     margin-top: -100px; /* Extend up to header */
     padding: 80px 60px;
     padding-top: 180px; /* Extra padding at top to account for extending to header */
-    background: linear-gradient(135deg, #FAFAFA 0%, #E5E5E5 50%, #F0F0F0 100%);
+    background:
+        radial-gradient(ellipse at 50% 35%, rgba(255, 255, 255, 0.5) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 75%, rgba(255, 255, 255, 0.2) 0%, transparent 45%),
+        radial-gradient(ellipse at 15% 80%, rgba(255, 255, 255, 0.15) 0%, transparent 40%),
+        linear-gradient(180deg, #F5F3F0 0%, #EBE8E4 40%, #F2EFEC 70%, #ECE9E5 100%);
     border-radius: 24px;
     border-top-left-radius: 0; /* No rounded corner at top */
     border-top-right-radius: 0; /* No rounded corner at top */
