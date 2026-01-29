@@ -342,6 +342,10 @@ a {
     flex-shrink: 0;
 }
 
+.card-front .team-photo.rishabh-photo {
+    object-position: 42% top;
+}
+
 .card-front .placeholder {
     width: 100%;
     flex: 1;
