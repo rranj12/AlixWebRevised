@@ -127,7 +127,7 @@ a {
     z-index: 2; /* Above purple bar */
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     height: auto;
     flex-shrink: 0;
 }
@@ -161,15 +161,6 @@ a {
     width: auto;
     height: auto;
     margin-right: 30px;
-}
-
-/* Bios on the right */
-.nav-bios {
-    position: relative;
-    width: auto;
-    height: auto;
-    margin-left: auto;
-    margin-right: 0;
 }
 
 /* Content */

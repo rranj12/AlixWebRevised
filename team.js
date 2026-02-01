@@ -66,7 +66,6 @@
                 (normalizedFilterText === 'residents' && buttonText === 'residents') ||
                 (normalizedFilterText === 'partners' && buttonText === 'partners') ||
                 (normalizedFilterText === 'advisory' && buttonText === 'advisory') ||
-                (normalizedFilterText === 'alumni' && buttonText === 'alumni') ||
                 (normalizedFilterText === 'all' && buttonText === 'all')) {
                 filter.classList.add('active');
             }
@@ -89,9 +88,6 @@
             } else if (normalizedFilterText === 'advisory') {
                 // Show cards with "Advisory" role when "Advisory" filter is clicked
                 shouldShow = role === 'Advisory';
-            } else if (normalizedFilterText === 'alumni') {
-                // Show cards with "Alumni" role when "Alumni" filter is clicked
-                shouldShow = role === 'Alumni';
             } else {
                 // For other filters, match exactly (case-insensitive)
                 shouldShow = role.toLowerCase() === normalizedFilterText;
