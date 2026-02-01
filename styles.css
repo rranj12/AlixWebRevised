@@ -515,12 +515,12 @@ a {
 
 /* Spotlight boxes - significantly taller, !important overrides responsive */
 .spotlight-box.box-1 {
-    grid-column: 2 / 4; /* Wide - Nature article */
+    grid-column: 2 / 4; /* Wide - top right, Sidewinder */
     grid-row: 1 / 2;
     min-height: 280px !important;
-    background-image: url('Background Images/genyro-nature.jpg');
-    background-size: 90%;
-    background-position: center 47%;
+    background-image: url('Background Images/genyro-sidewinder1.png');
+    background-size: 100%;
+    background-position: center 49%;
     background-repeat: no-repeat;
     background-color: rgba(1, 27, 49, 0.34); /* Fallback color */
 }
@@ -564,7 +564,7 @@ a {
     min-height: 280px !important;
     background-image: url('Background Images/genryo_news1_final.png');
     background-size: 105%;
-    background-position: center 45%;
+    background-position: center 44%;
     background-repeat: no-repeat;
     background-color: rgba(1, 27, 49, 0.30); /* Fallback color */
 }
