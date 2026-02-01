@@ -200,13 +200,13 @@ a {
     margin-right: 0;
 }
 
-/* Hero Container - Centered like Novana */
+/* Hero Container - Starts at top of .desktop (desktop is already below header) */
 .hero-container {
     position: absolute;
-    top: 100px; /* Start right after header */
+    top: 0;
     left: 0;
     width: 100%;
-    height: calc(100% - 100px);
+    height: calc(100vh - 100px); /* Viewport minus header so hero box stays in view */
     display: flex;
     align-items: center;
     justify-content: center;
