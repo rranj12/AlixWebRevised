@@ -261,14 +261,49 @@ a {
     background-color: #011b31;
 }
 
-/* Team Grid */
+/* Team Grid - Rows stacked: Row 1 Partners, Row 2 Advisory, Row 3–4 Residents */
 .team-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Extra space between sections (partners, advisory, residents) */
+.team-row-partners {
+    margin-bottom: 56px; /* 40px gap + 56px = more space before advisory */
+}
+.team-row-advisory {
+    margin-bottom: 56px; /* more space before residents */
+}
+
+/* Each row: flex so card groups are centered */
+.team-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+}
+
+/* Residents: fixed 4 + 3 grid so only 2 rows (no wrap into third row) */
+.team-row-residents-1,
+.team-row-residents-2 {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 40px;
     justify-content: center;
     width: 100%;
-    max-width: 100%;
+}
+.team-row-residents-1 {
+    grid-template-columns: repeat(4, minmax(0, 280px));
+}
+.team-row-residents-2 {
+    grid-template-columns: repeat(3, minmax(0, 280px));
+}
+.team-row-residents-1 .team-card,
+.team-row-residents-2 .team-card {
+    width: 100%;
 }
 
 /* Partners Grid - Center two cards */
@@ -283,7 +318,7 @@ a {
 
 .team-card {
     perspective: 1200px;
-    width: 100%;
+    width: 270px;
     min-width: 0;
     max-width: 100%;
     min-height: 400px;
@@ -402,10 +437,12 @@ a {
 }
 
 @media (max-width: 1400px) {
-    .team-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 40px;
+    /* Partners and Advisory: 3 cards per row */
+    .team-row-partners .team-card,
+    .team-row-advisory .team-card {
+        width: calc((100% - 80px) / 3);
     }
+    /* Residents: grid keeps 4 + 3 columns (no width override needed) */
 }
 
 @media (max-width: 900px) {
@@ -447,9 +484,15 @@ a {
         font-size: 18px;
     }
 
-    .team-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 32px;
+    .team-card {
+        width: calc((100% - 40px) / 2);
+    }
+    /* Residents: grid keeps 4 + 3 columns; shrink column size to fit */
+    .team-row-residents-1 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .team-row-residents-2 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
@@ -463,10 +506,9 @@ a {
         gap: 20px;
     }
 
-    .team-grid {
-        grid-template-columns: 1fr;
-        justify-content: center;
-        gap: 32px;
+    .team-card {
+        width: 100%;
+        max-width: 100%;
     }
 
     .team-card {
@@ -476,6 +518,11 @@ a {
         min-height: 350px;
         aspect-ratio: 360 / 460;
         margin: 0 auto;
+    }
+    /* Residents: single column so still 2 rows (4 stacked, 3 stacked) */
+    .team-row-residents-1,
+    .team-row-residents-2 {
+        grid-template-columns: 1fr;
     }
 }
 

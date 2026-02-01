@@ -103,6 +103,14 @@
                 card.classList.add('hidden');
             }
         });
+
+        // Hide rows that have no visible cards (when using row structure)
+        const rows = document.querySelectorAll('.team-row');
+        rows.forEach(row => {
+            const cards = row.querySelectorAll('.team-card');
+            const anyVisible = Array.from(cards).some(c => c.style.display !== 'none' && !c.classList.contains('hidden'));
+            row.style.display = anyVisible ? '' : 'none';
+        });
     }
     
     function initFilters() {
