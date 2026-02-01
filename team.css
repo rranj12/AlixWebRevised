@@ -372,26 +372,72 @@ a {
     object-position: 42% top;
 }
 
-/* Photo frame: clips zoom to the photo area only (not the whole card) */
+/* Photo frame: clips zoom to the photo area only (not the whole card) - used for all team cards */
 .team-photo-frame {
+    width: 100%;
+    height: 280px;
+    margin-bottom: 24px;
     overflow: hidden;
     border-radius: 4px;
     background-color: #f0f0f0;
     flex-shrink: 0;
 }
-.team-photo-frame-navdeep {
-    width: 100%;
-    height: 280px;
-    margin-bottom: 24px;
-}
-/* Zoom into Navdeep Bhalla photo, clipped to the photo frame only */
-.team-photo-frame-navdeep .team-photo.navdeep-photo {
+/* Zoom into all team photos significantly, clipped to the photo frame only */
+.team-photo-frame .team-photo {
     width: 100%;
     height: 280px;
     object-fit: cover;
-    object-position: center 30%;
-    transform: scale(1.35);
+    object-position: center -35%;
+    transform: scale(1.6);
     display: block;
+}
+/* Rishabh: zoom in more + shift within frame */
+.team-photo-frame .team-photo.rishabh-photo {
+    object-position: 65% -85%;
+    transform: scale(2.5) translateY(3px);
+}
+/* Chas: zoom in (slightly less) + shift right 1px, down 9px */
+.team-photo-frame .team-photo.chas-photo {
+    transform: scale(1.9) translateX(1px) translateY(9px);
+}
+/* Mark: zoom in significantly + shift down 4px */
+.team-photo-frame .team-photo.mark-photo {
+    transform: scale(2.25) translateY(4px);
+}
+/* Nick: zoom in a little more + shift right 2px, down 7px */
+.team-photo-frame .team-photo.nick-photo {
+    transform: scale(2.45) translateX(2px) translateY(7px);
+}
+/* Michelle, Arman: zoom in significantly */
+.team-photo-frame .team-photo.michelle-photo,
+.team-photo-frame .team-photo.arman-photo {
+    transform: scale(2.25);
+}
+/* Navdeep: zoom in more + shift rightward + upward a little */
+.team-photo-frame .team-photo.navdeep-photo {
+    transform: scale(2.6) translateX(4px) translateY(-10px);
+}
+/* Olivia, Gia, Odera: zoom in a lot more */
+.team-photo-frame .team-photo.olivia-photo,
+.team-photo-frame .team-photo.gia-photo,
+.team-photo-frame .team-photo.odera-photo {
+    transform: scale(2.6);
+}
+/* Odera: shift image upward a little */
+.team-photo-frame .team-photo.odera-photo {
+    object-position: center -55%;
+}
+/* Jacob: zoom in + shift down 10px */
+.team-photo-frame .team-photo.jacob-photo {
+    transform: scale(1.85) translateY(10px);
+}
+/* Daniel: zoom in a little + shift right 8px, down 15px */
+.team-photo-frame .team-photo.daniel-photo {
+    transform: scale(1.8) translateX(8px) translateY(15px);
+}
+/* Brian: shift down 30px */
+.team-photo-frame .team-photo.brian-photo {
+    transform: scale(1.6) translateY(30px);
 }
 
 .card-front .placeholder {
