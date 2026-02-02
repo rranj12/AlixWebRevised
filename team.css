@@ -122,8 +122,12 @@ a {
 /* Navigation */
 .navigation {
     position: absolute;
-    left: 50px;
-    right: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 40px;
+    box-sizing: border-box;
     z-index: 2; /* Above purple bar */
     display: flex;
     align-items: center;
@@ -173,10 +177,10 @@ a {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 120px 40px 120px; /* Aligned with header bar padding */
+    padding: 40px 40px 120px; /* Aligned with header bar padding */
     display: flex;
     flex-direction: column;
-    gap: 64px;
+    gap: 48px;
     box-sizing: border-box;
 }
 
@@ -260,66 +264,53 @@ a {
 .team-grid {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 60px;
     width: 100%;
     max-width: 100%;
 }
 
-/* Extra space between sections (partners, advisory, residents) */
-.team-row-partners {
-    margin-bottom: 56px; /* 40px gap + 56px = more space before advisory */
-}
-.team-row-advisory {
-    margin-bottom: 56px; /* more space before residents */
-}
-
-/* Each row: flex so card groups are centered */
+/* Each row: grid to fill the full width like the menu bar */
 .team-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
-    width: 100%;
-}
-
-/* Residents: fixed 4 + 3 grid so only 2 rows (no wrap into third row) */
-.team-row-residents-1,
-.team-row-residents-2 {
     display: grid;
-    gap: 40px;
-    justify-content: center;
-    width: 100%;
-}
-.team-row-residents-1 {
-    grid-template-columns: repeat(4, minmax(0, 280px));
-}
-.team-row-residents-2 {
-    grid-template-columns: repeat(3, minmax(0, 280px));
-}
-.team-row-residents-1 .team-card,
-.team-row-residents-2 .team-card {
+    gap: 32px;
     width: 100%;
 }
 
-/* Partners Grid - Center two cards */
+/* Partners and Advisory: 3 columns filling full width */
+.team-row-partners,
+.team-row-advisory {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Residents: 4 columns for first row, 3 for second - all filling full width */
+.team-row-residents-1 {
+    grid-template-columns: repeat(4, 1fr);
+}
+.team-row-residents-2 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.team-row .team-card {
+    width: 100%;
+}
+
+/* Partners Grid - Center aligned */
 .partners-grid {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 40px;
-    max-width: 600px;
-    margin: 0 auto;
+    width: 100%;
 }
 
 .team-card {
     perspective: 1200px;
-    width: 270px;
+    width: 100%;
     min-width: 0;
     max-width: 100%;
-    min-height: 400px;
+    min-height: 360px;
     aspect-ratio: 360 / 460;
     cursor: pointer;
-    flex-shrink: 0;
 }
 
 .card-inner {
@@ -501,13 +492,14 @@ a {
     color: #000000;
 }
 
-@media (max-width: 1400px) {
-    /* Partners and Advisory: 3 cards per row */
-    .team-row-partners .team-card,
-    .team-row-advisory .team-card {
-        width: calc((100% - 80px) / 3);
+@media (max-width: 1200px) {
+    /* All rows: 3 columns */
+    .team-row-partners,
+    .team-row-advisory,
+    .team-row-residents-1,
+    .team-row-residents-2 {
+        grid-template-columns: repeat(3, 1fr);
     }
-    /* Residents: grid keeps 4 + 3 columns (no width override needed) */
 }
 
 @media (max-width: 900px) {
@@ -538,7 +530,7 @@ a {
 
     .content {
         width: 100%;
-        padding: 80px 40px 100px; /* Aligned with header bar padding */
+        padding: 40px 40px 100px; /* Aligned with header bar padding */
     }
 
     .title-text {
@@ -549,22 +541,23 @@ a {
         font-size: 18px;
     }
 
-    .team-card {
-        width: calc((100% - 40px) / 2);
-    }
-    /* Residents: grid keeps 4 + 3 columns; shrink column size to fit */
-    .team-row-residents-1 {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
+    /* All rows: 2 columns on tablet */
+    .team-row-partners,
+    .team-row-advisory,
+    .team-row-residents-1,
     .team-row-residents-2 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 600px) {
     .content {
         width: 100%;
-        padding: 64px 20px 80px; /* Smaller padding for mobile */
+        padding: 32px 20px 80px; /* Smaller padding for mobile */
+    }
+
+    .team-grid {
+        gap: 40px;
     }
 
     .filters {
@@ -572,19 +565,12 @@ a {
     }
 
     .team-card {
-        width: 100%;
-        max-width: 100%;
+        min-height: 350px;
     }
 
-    .team-card {
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        min-height: 350px;
-        aspect-ratio: 360 / 460;
-        margin: 0 auto;
-    }
-    /* Residents: single column so still 2 rows (4 stacked, 3 stacked) */
+    /* All rows: single column on mobile */
+    .team-row-partners,
+    .team-row-advisory,
     .team-row-residents-1,
     .team-row-residents-2 {
         grid-template-columns: 1fr;

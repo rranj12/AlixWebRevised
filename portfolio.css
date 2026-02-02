@@ -31,7 +31,7 @@ a {
     margin: 0 auto;
     background-color: #F5F3F0;
     flex: 1;
-    min-height: 2300px; /* Space between portfolio list and footer */
+    padding-bottom: 100px; /* Space between portfolio list and footer */
 }
 
 /* Header Bar - Rounded purple bar on white background */
@@ -124,8 +124,12 @@ a {
 /* Navigation */
 .navigation {
     position: absolute;
-    left: 50px;
-    right: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 40px;
+    box-sizing: border-box;
     z-index: 2; /* Above purple bar */
     display: flex;
     align-items: center;
@@ -171,11 +175,12 @@ a {
 
 /* Title */
 .title {
-    position: absolute;
-    top: 110px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 869px;
+    position: relative;
+    margin-top: 40px;
+    width: 100%;
+    max-width: 869px;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
 }
 
@@ -197,9 +202,14 @@ a {
 
 /* Filters */
 .filters {
-    position: absolute;
-    top: 280px;
-    left: 50px;
+    position: relative;
+    margin-top: 60px;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 40px;
+    box-sizing: border-box;
     display: flex;
     gap: 32px;
 }
@@ -409,24 +419,27 @@ a {
 
 /* Table */
 .table {
-    position: absolute;
-    top: 360px;
-    left: 50px;
-    right: 50px;
+    position: relative;
+    margin-top: 40px;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 40px;
+    box-sizing: border-box;
     font-family: 'IBM Plex Sans', sans-serif;
-    padding-bottom: 0;
 }
 
 .table-header {
     display: grid;
-    grid-template-columns: 240px 240px 1fr 160px;
+    grid-template-columns: 240px 240px 1fr 200px;
     font-size: 18px;
     color: #000000;
 }
 
 .table-row {
     display: grid;
-    grid-template-columns: 240px 240px 1fr 160px;
+    grid-template-columns: 240px 240px 1fr 200px;
     font-size: 24px;
     color: #000000;
     padding: 24px 0;
@@ -443,6 +456,31 @@ a {
 
 .table-cell {
     white-space: nowrap;
+    min-width: 0;
+}
+
+.table-cell.category {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 20px;
+}
+
+.table-cell.description {
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.4;
+    max-height: 2.8em;
+    min-width: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    padding-right: 20px;
+    box-sizing: border-box;
 }
 
 .table-row .table-cell:not(:first-child) {
@@ -475,7 +513,7 @@ a {
 
     .table-header,
     .table-row {
-        grid-template-columns: 140px 160px 1fr 120px;
+        grid-template-columns: 140px 160px 1fr 180px;
     }
 }
 
@@ -508,7 +546,7 @@ a {
     }
     
     .title {
-        top: 200px;
+        margin-top: 20px;
         width: calc(100% - 40px);
     }
 
@@ -522,14 +560,13 @@ a {
 
 
     .filters {
-        top: 520px;
-        left: 20px;
+        margin-top: 40px;
+        padding: 0 20px;
     }
 
     .table {
-        top: 560px;
-        left: 20px;
-        right: 20px;
+        margin-top: 30px;
+        padding: 0 20px;
     }
 
     .table-header,
