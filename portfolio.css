@@ -165,6 +165,10 @@ a {
     margin-right: 30px;
 }
 
+.nav-bios {
+    margin-left: auto;
+}
+
 /* Title */
 .title {
     position: absolute;
@@ -688,4 +692,67 @@ a {
         grid-template-columns: 1fr;
         gap: 30px;
     }
+}
+
+/* Bios popup - purple overlay */
+.bios-popup-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.bios-popup-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+.bios-popup {
+    position: relative;
+    background: #455daa;
+    color: #fff;
+    padding: 28px 40px;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    max-width: 90%;
+}
+.bios-popup-text {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0;
+}
+.bios-popup-text a {
+    color: #fff;
+    text-decoration: underline;
+    font-weight: 500;
+}
+.bios-popup-text a:hover {
+    opacity: 0.9;
+}
+.bios-popup-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+.bios-popup-close:hover {
+    background: rgba(255, 255, 255, 0.3);
 }

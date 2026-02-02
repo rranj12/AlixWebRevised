@@ -506,6 +506,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Scroll reveal/fade for spotlight grid container and background image - pure IntersectionObserver, no scroll listeners
     const spotlightContainer = document.querySelector('.spotlight-container');
+    const highlightsHeader = document.querySelector('.highlights-header');
     const backgroundImage = document.querySelector('.scroll-background-image');
     const particleCanvas = document.getElementById('particle-canvas');
     const fadeTop = document.querySelector('.scroll-fade-top');
@@ -516,6 +517,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (spotlightContainer) {
         // Initial state - hidden on page load
         spotlightContainer.classList.remove('visible');
+        if (highlightsHeader) highlightsHeader.classList.remove('visible');
         if (backgroundImage) {
             backgroundImage.classList.remove('visible');
         }
@@ -586,6 +588,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const entry = entries[0];
             if (entry.isIntersecting) {
                 spotlightContainer.classList.add('visible');
+                if (highlightsHeader) highlightsHeader.classList.add('visible');
                 if (backgroundImage) {
                     backgroundImage.classList.add('visible');
                 }
@@ -596,6 +599,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             } else {
                 spotlightContainer.classList.remove('visible');
+                if (highlightsHeader) highlightsHeader.classList.remove('visible');
                 if (backgroundImage) {
                     backgroundImage.classList.remove('visible');
                 }

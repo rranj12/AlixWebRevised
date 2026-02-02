@@ -26,8 +26,17 @@
             <a href="our-approach.html" class="nav-item nav-approach active">Our Approach</a>
             <a href="portfolio.html" class="nav-item nav-portfolio">Portfolio</a>
             <a href="team.html" class="nav-item nav-team">Team</a>
+            <a href="#" class="nav-item nav-bios" id="bios-trigger" role="button">Bios ↗</a>
         </nav>
     </header>
+    
+    <!-- Bios popup -->
+    <div id="bios-popup" class="bios-popup-overlay" aria-hidden="true">
+        <div class="bios-popup">
+            <p class="bios-popup-text">Our new BIOS+ site is launching soon with additional features! In the meantime, follow our thinking at <a href="https://bioscommunity.substack.com/" target="_blank" rel="noopener noreferrer">BIOS+ on Substack</a>.</p>
+            <button type="button" class="bios-popup-close" aria-label="Close">×</button>
+        </div>
+    </div>
     
     <main class="content-wrapper">
         <!-- Background Image Slice -->
@@ -163,5 +172,17 @@
     </footer>
     
     <script src="our-approach.js"></script>
+    <script>
+        (function() {
+            var trigger = document.getElementById('bios-trigger');
+            var popup = document.getElementById('bios-popup');
+            var closeBtn = popup && popup.querySelector('.bios-popup-close');
+            if (trigger && popup) {
+                trigger.addEventListener('click', function(e) { e.preventDefault(); popup.classList.add('visible'); popup.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; });
+                popup.addEventListener('click', function(e) { if (e.target === popup) { popup.classList.remove('visible'); popup.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; } });
+                if (closeBtn) closeBtn.addEventListener('click', function() { popup.classList.remove('visible'); popup.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; });
+            }
+        })();
+    </script>
 </body>
 </html>

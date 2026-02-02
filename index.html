@@ -34,8 +34,17 @@
             <a href="our-approach.html" class="nav-item nav-approach" data-node-id="0:6">Our Approach</a>
             <a href="portfolio.html" class="nav-item nav-portfolio" data-node-id="0:8">Portfolio</a>
             <a href="team.html" class="nav-item nav-team" data-node-id="0:7">Team</a>
+            <a href="#" class="nav-item nav-bios" id="bios-trigger" role="button">Bios ↗</a>
         </nav>
     </header>
+    
+    <!-- Bios popup -->
+    <div id="bios-popup" class="bios-popup-overlay" aria-hidden="true">
+        <div class="bios-popup">
+            <p class="bios-popup-text">Our new BIOS+ site is launching soon with additional features! In the meantime, follow our thinking at <a href="https://bioscommunity.substack.com/" target="_blank" rel="noopener noreferrer">BIOS+ on Substack</a>.</p>
+            <button type="button" class="bios-popup-close" aria-label="Close">×</button>
+        </div>
+    </div>
     
     <!-- Main Content Area with Particle Background -->
     <div class="desktop" data-name="Desktop" data-node-id="0:3">
@@ -69,6 +78,8 @@
         <div class="scroll-fade-left"></div>
         <div class="scroll-fade-right"></div>
         
+        <!-- Highlights section -->
+        <h2 class="highlights-header">Highlights</h2>
         <!-- Bottom Content - Spotlight boxes (PRnewswire first, then rest) -->
         <div class="spotlight-container">
             <a href="https://sidewinder.genyro.com/" target="_blank" rel="noopener noreferrer" class="spotlight-box box-1" data-node-id="0:19">
@@ -139,6 +150,18 @@
     </footer>
     
     <script src="script.js"></script>
+    <script>
+        (function() {
+            var trigger = document.getElementById('bios-trigger');
+            var popup = document.getElementById('bios-popup');
+            var closeBtn = popup && popup.querySelector('.bios-popup-close');
+            if (trigger && popup) {
+                trigger.addEventListener('click', function(e) { e.preventDefault(); popup.classList.add('visible'); popup.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; });
+                popup.addEventListener('click', function(e) { if (e.target === popup) { popup.classList.remove('visible'); popup.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; } });
+                if (closeBtn) closeBtn.addEventListener('click', function() { popup.classList.remove('visible'); popup.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; });
+            }
+        })();
+    </script>
 </body>
 </html>
 

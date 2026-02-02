@@ -187,8 +187,11 @@ a {
 .nav-team {
     position: relative;
     width: auto;
-    height: auto;
     margin-right: 30px;
+}
+
+.nav-bios {
+    margin-left: auto;
 }
 
 /* Hero Container - Starts at top of .desktop (desktop is already below header) */
@@ -380,6 +383,34 @@ a {
     opacity: 1; /* Fully visible to match team page card color */
 }
 
+
+/* Highlights header - above spotlight panel */
+.highlights-header {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(30px) translateZ(0);
+    top: calc(110vh - 72px); /* Just above spotlight grid */
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: 0;
+    z-index: 2;
+    font-family: 'Instrument Serif', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: #0a2d4a;
+    text-align: center;
+    letter-spacing: 0.02em;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 2.5s ease, transform 2.5s ease;
+    pointer-events: none;
+}
+
+.highlights-header.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
 
 /* Spotlight Container - Grid layout, height fits content so it compresses with boxes */
 .spotlight-container {
@@ -711,7 +742,8 @@ a {
     }
     
     .nav-portfolio,
-    .nav-team {
+    .nav-team,
+    .nav-bios {
         margin-left: 0;
     }
     
@@ -912,4 +944,67 @@ a {
         grid-template-columns: 1fr;
         gap: 30px;
     }
+}
+
+/* Bios popup - purple overlay */
+.bios-popup-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.bios-popup-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+.bios-popup {
+    position: relative;
+    background: #455daa;
+    color: #fff;
+    padding: 28px 40px;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    max-width: 90%;
+}
+.bios-popup-text {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0;
+}
+.bios-popup-text a {
+    color: #fff;
+    text-decoration: underline;
+    font-weight: 500;
+}
+.bios-popup-text a:hover {
+    opacity: 0.9;
+}
+.bios-popup-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+.bios-popup-close:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
