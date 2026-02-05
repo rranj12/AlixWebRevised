@@ -282,16 +282,43 @@ a {
     grid-template-columns: repeat(3, 1fr);
 }
 
-/* Residents: 4 columns for first row, 3 for second - all filling full width */
-.team-row-residents-1 {
+/* Residents: 4 columns for both rows - second row items stay left-aligned at same size */
+.team-row-residents-1,
+.team-row-residents-2 {
     grid-template-columns: repeat(4, 1fr);
 }
-.team-row-residents-2 {
-    grid-template-columns: repeat(3, 1fr);
+
+/* Different photo frame heights for Partners/Advisory vs Residents */
+.team-row-partners .team-photo-frame,
+.team-row-advisory .team-photo-frame {
+    height: 340px;
+}
+
+.team-row-residents-1 .team-photo-frame,
+.team-row-residents-2 .team-photo-frame {
+    height: 200px;
 }
 
 .team-row .team-card {
     width: 100%;
+}
+
+/* Partners/Advisory cards - larger with fixed height */
+.team-row-partners .team-card,
+.team-row-advisory .team-card {
+    height: 480px;
+}
+
+/* Residents cards - smaller with fixed height */
+.team-row-residents-1 .team-card,
+.team-row-residents-2 .team-card {
+    height: 340px;
+}
+
+/* Add bottom margin to role text for resident cards */
+.team-row-residents-1 .role,
+.team-row-residents-2 .role {
+    margin-bottom: 16px;
 }
 
 /* Partners Grid - Center aligned */
@@ -308,8 +335,6 @@ a {
     width: 100%;
     min-width: 0;
     max-width: 100%;
-    min-height: 360px;
-    aspect-ratio: 360 / 460;
     cursor: pointer;
 }
 
@@ -335,7 +360,7 @@ a {
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
-    padding: 24px;
+    padding: 16px;
     border-radius: 6px;
     background-color: #FCF7F0;
     color: #000000;
@@ -343,7 +368,7 @@ a {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .card-front {
@@ -363,11 +388,7 @@ a {
     flex-shrink: 0;
 }
 
-.card-front .team-photo.rishabh-photo {
-    object-position: 42% top;
-}
-
-/* Photo frame: clips zoom to the photo area only (not the whole card) - used for all team cards */
+/* Photo frame container */
 .team-photo-frame {
     width: 100%;
     height: 280px;
@@ -379,62 +400,13 @@ a {
     border: 2px solid #e0e0e0;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6), 0 2px 8px rgba(0, 0, 0, 0.08);
 }
-/* Zoom into all team photos significantly, clipped to the photo frame only */
+/* Simple photo styling - no transforms, just object-fit cover with center positioning */
 .team-photo-frame .team-photo {
     width: 100%;
-    height: 280px;
+    height: 100%;
     object-fit: cover;
-    object-position: center 20%;
-    transform: scale(1.6);
+    object-position: center top;
     display: block;
-}
-/* Rishabh: zoom in more + shift within frame */
-.team-photo-frame .team-photo.rishabh-photo {
-    object-position: 65% -85%;
-    transform: scale(2.5) translateY(3px);
-}
-/* Chas: zoom in + center face */
-.team-photo-frame .team-photo.chas-photo {
-    transform: scale(1.5) translateX(1px) translateY(-2px);
-}
-/* Mark: zoom in + center face */
-.team-photo-frame .team-photo.mark-photo {
-    transform: scale(1.8) translateY(-8px);
-}
-/* Nick: zoom in + center face */
-.team-photo-frame .team-photo.nick-photo {
-    transform: scale(1.9) translateX(2px) translateY(-4px);
-}
-/* Michelle, Arman: zoom in significantly */
-.team-photo-frame .team-photo.michelle-photo,
-.team-photo-frame .team-photo.arman-photo {
-    transform: scale(2.25);
-}
-/* Navdeep: zoom in more + shift rightward + upward a little */
-.team-photo-frame .team-photo.navdeep-photo {
-    transform: scale(2.6) translateX(4px) translateY(-10px);
-}
-/* Olivia, Gia, Odera: zoom in a lot more */
-.team-photo-frame .team-photo.olivia-photo,
-.team-photo-frame .team-photo.gia-photo,
-.team-photo-frame .team-photo.odera-photo {
-    transform: scale(2.6);
-}
-/* Odera: shift image upward a little */
-.team-photo-frame .team-photo.odera-photo {
-    object-position: center -55%;
-}
-/* Jacob: zoom in + center face */
-.team-photo-frame .team-photo.jacob-photo {
-    transform: scale(1.45) translateY(-2px);
-}
-/* Daniel: zoom in + center face */
-.team-photo-frame .team-photo.daniel-photo {
-    transform: scale(1.4) translateX(8px) translateY(2px);
-}
-/* Brian: zoom in + center face */
-.team-photo-frame .team-photo.brian-photo {
-    transform: scale(1.3) translateY(16px);
 }
 
 .card-front .placeholder {
@@ -493,12 +465,44 @@ a {
 }
 
 @media (max-width: 1200px) {
-    /* All rows: 3 columns */
+    /* Maintain column structure - partners/advisory 3 cols, residents 4 cols */
     .team-row-partners,
-    .team-row-advisory,
+    .team-row-advisory {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
     .team-row-residents-1,
     .team-row-residents-2 {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+
+    /* Adjusted card heights at 1200px */
+    .team-row-partners .team-card,
+    .team-row-advisory .team-card {
+        height: 420px;
+    }
+    .team-row-residents-1 .team-card,
+    .team-row-residents-2 .team-card {
+        height: 300px;
+    }
+
+    /* Adjusted photo frame heights at 1200px */
+    .team-row-partners .team-photo-frame,
+    .team-row-advisory .team-photo-frame {
+        height: 290px;
+    }
+    .team-row-residents-1 .team-photo-frame,
+    .team-row-residents-2 .team-photo-frame {
+        height: 180px;
+    }
+
+    /* Adjusted text sizes at 1200px */
+    .team-card .name {
+        font-size: 20px;
+    }
+    .team-card .role {
+        font-size: 16px;
     }
 }
 
@@ -541,12 +545,44 @@ a {
         font-size: 18px;
     }
 
-    /* All rows: 2 columns on tablet */
+    /* Maintain column structure on tablet - partners/advisory 3 cols, residents 4 cols */
     .team-row-partners,
-    .team-row-advisory,
+    .team-row-advisory {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
     .team-row-residents-1,
     .team-row-residents-2 {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    /* Tablet card heights */
+    .team-row-partners .team-card,
+    .team-row-advisory .team-card {
+        height: 380px;
+    }
+    .team-row-residents-1 .team-card,
+    .team-row-residents-2 .team-card {
+        height: 280px;
+    }
+
+    /* Tablet photo frame heights */
+    .team-row-partners .team-photo-frame,
+    .team-row-advisory .team-photo-frame {
+        height: 260px;
+    }
+    .team-row-residents-1 .team-photo-frame,
+    .team-row-residents-2 .team-photo-frame {
+        height: 170px;
+    }
+
+    /* Tablet text sizes */
+    .team-card .name {
+        font-size: 18px;
+    }
+    .team-card .role {
+        font-size: 14px;
     }
 }
 
@@ -564,16 +600,57 @@ a {
         gap: 20px;
     }
 
-    .team-card {
-        min-height: 350px;
+    /* Fixed card heights for mobile - ensure name and role are visible */
+    .team-row-partners .team-card,
+    .team-row-advisory .team-card {
+        height: 280px;
+    }
+    .team-row-residents-1 .team-card,
+    .team-row-residents-2 .team-card {
+        height: 200px;
     }
 
-    /* All rows: single column on mobile */
+    /* Reduce card padding on mobile */
+    .card-face {
+        padding: 10px;
+    }
+
+    /* Reduce margins on name/role on mobile */
+    .team-card .name {
+        margin-bottom: 2px;
+        margin-top: 6px;
+        font-size: 11px;
+    }
+    .team-card .role {
+        margin-bottom: 10px;
+        font-size: 9px;
+    }
+
+    /* Reduce photo frame margin on mobile */
+    .team-photo-frame {
+        margin-bottom: 6px;
+    }
+
+    /* Maintain column structure on mobile - partners/advisory 3 cols, residents 4 cols */
     .team-row-partners,
-    .team-row-advisory,
+    .team-row-advisory {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
     .team-row-residents-1,
     .team-row-residents-2 {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+    }
+
+    /* Reduce photo frame heights on mobile to fit */
+    .team-row-partners .team-photo-frame,
+    .team-row-advisory .team-photo-frame {
+        height: 180px;
+    }
+    .team-row-residents-1 .team-photo-frame,
+    .team-row-residents-2 .team-photo-frame {
+        height: 120px;
     }
 }
 
