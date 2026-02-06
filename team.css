@@ -380,7 +380,7 @@ a {
     width: 100%;
     height: 280px;
     object-fit: cover;
-    object-position: center top;
+    object-position: center 40%;
     margin-bottom: 24px;
     border-radius: 4px;
     background-color: #f0f0f0;
@@ -400,14 +400,38 @@ a {
     border: 2px solid #e0e0e0;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6), 0 2px 8px rgba(0, 0, 0, 0.08);
 }
-/* Simple photo styling - no transforms, just object-fit cover with center positioning */
+/* Simple photo styling - center on face/head for consistent framing */
 .team-photo-frame .team-photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
+    object-position: center 40%; /* Chas-style default: balanced headroom + chest */
     display: block;
 }
+
+/* Per-photo overrides – Chas as reference (balanced headroom + chest), everyone else matched to that */
+.team-photo-frame .team-photo.chas-photo { object-position: center 40% !important; }
+.team-photo-frame .team-photo.nick-photo { object-position: center 30% !important; } /* higher + a bit smaller in frame */
+.team-photo-frame .team-photo.mark-photo,
+.team-photo-frame .team-photo.daniel-photo,
+.team-photo-frame .team-photo.jacob-photo { object-position: center 40% !important; }
+.team-photo-frame .team-photo.brian-photo { object-position: center 50% !important; } /* lower in frame */
+
+.team-photo-frame .team-photo.rishabh-photo { object-position: center 32% !important; } /* higher */
+.team-photo-frame .team-photo.navdeep-photo { object-position: center 42% !important; } /* higher */
+.team-photo-frame .team-photo.michelle-photo { object-position: center 40% !important; }
+.team-photo-frame .team-photo.arman-photo { object-position: center 30% !important; } /* higher */
+.team-photo-frame .team-photo.gia-photo { object-position: center 48% !important; } /* higher */
+.team-photo-frame .team-photo.olivia-photo { object-position: center 40% !important; }
+.team-photo-frame .team-photo.odera-photo { object-position: center 45% !important; } /* lower in frame */
+/* Resident rows: ensure overrides win in media queries */
+.team-row-residents-1 .team-photo-frame .team-photo.navdeep-photo,
+.team-row-residents-2 .team-photo-frame .team-photo.navdeep-photo { object-position: center 42% !important; }
+.team-row-residents-1 .team-photo-frame .team-photo.gia-photo,
+.team-row-residents-2 .team-photo-frame .team-photo.gia-photo { object-position: center 48% !important; }
+.team-row-residents-1 .team-photo-frame .team-photo.odera-photo,
+.team-row-residents-2 .team-photo-frame .team-photo.odera-photo { object-position: center 45% !important; }
+
 
 .card-front .placeholder {
     width: 100%;
