@@ -269,11 +269,12 @@ a {
     max-width: 100%;
 }
 
-/* Each row: grid to fill the full width like the menu bar */
+/* Each row: grid to fill the full width; cards align to start so height = content (frame ends right above name) */
 .team-row {
     display: grid;
     gap: 32px;
     width: 100%;
+    align-items: start;
 }
 
 /* Partners and Advisory: 3 columns filling full width */
@@ -288,31 +289,35 @@ a {
     grid-template-columns: repeat(4, 1fr);
 }
 
-/* Different photo frame heights for Partners/Advisory vs Residents */
+/* Partners/Advisory: taller portrait frame; Residents: slightly shorter frame */
 .team-row-partners .team-photo-frame,
 .team-row-advisory .team-photo-frame {
-    height: 340px;
+    aspect-ratio: 4 / 5;
+    height: auto;
 }
 
 .team-row-residents-1 .team-photo-frame,
 .team-row-residents-2 .team-photo-frame {
-    height: 200px;
+    aspect-ratio: 5 / 6;
+    height: auto;
 }
 
 .team-row .team-card {
     width: 100%;
 }
 
-/* Partners/Advisory cards - larger with fixed height */
+/* Partners/Advisory cards - height from content (frame + name + role) */
 .team-row-partners .team-card,
 .team-row-advisory .team-card {
-    height: 480px;
+    height: auto;
+    min-height: 400px;
 }
 
-/* Residents cards - smaller with fixed height */
+/* Residents cards - height from content */
 .team-row-residents-1 .team-card,
 .team-row-residents-2 .team-card {
-    height: 340px;
+    height: auto;
+    min-height: 280px;
 }
 
 /* Add bottom margin to role text for resident cards */
@@ -341,7 +346,7 @@ a {
 .card-inner {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: auto;
     max-width: 100%;
     transform-style: preserve-3d;
     transition: transform 0.6s ease;
@@ -352,8 +357,6 @@ a {
 }
 
 .card-face {
-    position: absolute;
-    inset: 0;
     backface-visibility: hidden;
     border: 1px solid #9d9d9d;
     display: flex;
@@ -371,14 +374,16 @@ a {
     overflow: visible;
 }
 
+/* Front face in flow so card height = frame + name + role (frame bottom right above name) */
 .card-front {
+    position: relative;
     color: #000000;
     justify-content: flex-start;
 }
 
 .card-front .team-photo {
     width: 100%;
-    height: 280px;
+    height: 100%;
     object-fit: cover;
     object-position: center 40%;
     margin-bottom: 24px;
@@ -388,10 +393,11 @@ a {
     flex-shrink: 0;
 }
 
-/* Photo frame container */
+/* Photo frame - elongated fixed aspect ratio so image doesn't shift on resize; bottom sits right above name */
 .team-photo-frame {
     width: 100%;
-    height: 280px;
+    aspect-ratio: 3 / 4;
+    height: auto;
     margin-bottom: 24px;
     overflow: hidden;
     border-radius: 6px;
@@ -417,11 +423,12 @@ a {
 .team-photo-frame .team-photo.jacob-photo { object-position: center 40% !important; }
 .team-photo-frame .team-photo.brian-photo { object-position: center 50% !important; } /* lower in frame */
 
-.team-photo-frame .team-photo.rishabh-photo { object-position: center 32% !important; } /* higher */
-.team-photo-frame .team-photo.navdeep-photo { object-position: center 42% !important; } /* higher */
-.team-photo-frame .team-photo.michelle-photo { object-position: center 40% !important; }
-.team-photo-frame .team-photo.arman-photo { object-position: center 30% !important; } /* higher */
-.team-photo-frame .team-photo.gia-photo { object-position: center 48% !important; } /* higher */
+/* Shift up 20px and extend image downward so more of the bottom is visible */
+.team-photo-frame .team-photo.rishabh-photo { object-position: center 32% !important; height: calc(100% + 20px); transform: translateY(-20px); }
+.team-photo-frame .team-photo.navdeep-photo { object-position: center 42% !important; height: calc(100% + 40px); transform: translateY(-40px); }
+.team-photo-frame .team-photo.michelle-photo { object-position: center 40% !important; height: calc(100% + 20px); transform: translateY(-20px); }
+.team-photo-frame .team-photo.arman-photo { object-position: center 30% !important; height: calc(100% + 20px); transform: translateY(-20px); }
+.team-photo-frame .team-photo.gia-photo { object-position: center 48% !important; transform: scale(1.15) translateY(-5px); } /* zoomed in, shifted up */
 .team-photo-frame .team-photo.olivia-photo { object-position: center 40% !important; }
 .team-photo-frame .team-photo.odera-photo { object-position: center 45% !important; } /* lower in frame */
 /* Resident rows: ensure overrides win in media queries */
@@ -452,7 +459,7 @@ a {
     font-weight: 600;
     color: #000000;
     margin-bottom: 8px;
-    margin-top: auto; /* Push name and role down to center them */
+    margin-top: 0;
     text-align: center;
     flex-shrink: 0;
 }
@@ -466,7 +473,10 @@ a {
     flex-shrink: 0;
 }
 
+/* Back face overlays front for flip; same size as card-inner */
 .card-back {
+    position: absolute;
+    inset: 0;
     color: #000000;
     transform: rotateY(180deg);
     justify-content: flex-start;
@@ -501,25 +511,17 @@ a {
         gap: 24px;
     }
 
-    /* Adjusted card heights at 1200px */
+    /* Card heights from content at 1200px */
     .team-row-partners .team-card,
     .team-row-advisory .team-card {
-        height: 420px;
+        min-height: 360px;
     }
     .team-row-residents-1 .team-card,
     .team-row-residents-2 .team-card {
-        height: 300px;
+        min-height: 260px;
     }
 
-    /* Adjusted photo frame heights at 1200px */
-    .team-row-partners .team-photo-frame,
-    .team-row-advisory .team-photo-frame {
-        height: 290px;
-    }
-    .team-row-residents-1 .team-photo-frame,
-    .team-row-residents-2 .team-photo-frame {
-        height: 180px;
-    }
+    /* Photo frames keep aspect-ratio (no fixed heights) */
 
     /* Adjusted text sizes at 1200px */
     .team-card .name {
@@ -581,25 +583,17 @@ a {
         gap: 20px;
     }
 
-    /* Tablet card heights */
+    /* Tablet card min-heights */
     .team-row-partners .team-card,
     .team-row-advisory .team-card {
-        height: 380px;
+        min-height: 320px;
     }
     .team-row-residents-1 .team-card,
     .team-row-residents-2 .team-card {
-        height: 280px;
+        min-height: 240px;
     }
 
-    /* Tablet photo frame heights */
-    .team-row-partners .team-photo-frame,
-    .team-row-advisory .team-photo-frame {
-        height: 260px;
-    }
-    .team-row-residents-1 .team-photo-frame,
-    .team-row-residents-2 .team-photo-frame {
-        height: 170px;
-    }
+    /* Photo frames keep aspect-ratio (no fixed heights) */
 
     /* Tablet text sizes */
     .team-card .name {
@@ -624,14 +618,16 @@ a {
         gap: 20px;
     }
 
-    /* Fixed card heights for mobile - ensure name and role are visible */
+    /* Card height from content on mobile */
     .team-row-partners .team-card,
     .team-row-advisory .team-card {
-        height: 280px;
+        height: auto;
+        min-height: 200px;
     }
     .team-row-residents-1 .team-card,
     .team-row-residents-2 .team-card {
-        height: 200px;
+        height: auto;
+        min-height: 160px;
     }
 
     /* Reduce card padding on mobile */
@@ -667,15 +663,7 @@ a {
         gap: 12px;
     }
 
-    /* Reduce photo frame heights on mobile to fit */
-    .team-row-partners .team-photo-frame,
-    .team-row-advisory .team-photo-frame {
-        height: 180px;
-    }
-    .team-row-residents-1 .team-photo-frame,
-    .team-row-residents-2 .team-photo-frame {
-        height: 120px;
-    }
+    /* Photo frames keep aspect-ratio (no fixed heights) */
 }
 
 /* Footer */
