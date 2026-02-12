@@ -175,13 +175,15 @@ a {
     width: calc(100% + 80px);
     height: 300px; /* 3x header bar height (100px * 3) */
     max-width: none;
-    margin: 0 -40px 35px; /* Negative horizontal margins to break out of content-wrapper padding */
-    background-image: url('background_image_9.png');
+    margin: 0 -40px 20px; /* Negative horizontal margins to break out of content-wrapper padding; match other image slices */
+    background-image: url('background_image_10.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 12px; /* Matching header bar border-radius */
     overflow: hidden; /* Ensure rounded corners are visible */
+    cursor: pointer;
+    position: relative; /* anchor overlay text so it doesn't move when panel expands */
 }
 
 /* Invest Image Slice - Above How We Invest */
@@ -190,12 +192,14 @@ a {
     height: 300px; /* 3x header bar height (100px * 3) */
     max-width: none;
     margin: 0 -40px 20px; /* Negative horizontal margins to break out of content-wrapper padding */
-    background-image: url('background_image_10.png');
+    background-image: url('background_image_9.png');
     background-size: cover;
     background-position: center center; /* Take slice from center of image */
     background-repeat: no-repeat;
     border-radius: 12px; /* Matching header bar border-radius */
     overflow: hidden; /* Ensure rounded corners are visible */
+    cursor: pointer;
+    position: relative; /* anchor overlay text */
 }
 
 /* Future Image Slice - Above The Future We're Building */
@@ -210,6 +214,27 @@ a {
     background-repeat: no-repeat;
     border-radius: 12px; /* Matching header bar border-radius */
     overflow: hidden; /* Ensure rounded corners are visible */
+    cursor: pointer;
+    position: relative; /* anchor overlay text */
+}
+
+/* Fourth image: Join us (links to Residency) */
+.join-image-link {
+    display: block;
+}
+
+.join-image-slice {
+    width: calc(100% + 80px);
+    height: 300px;
+    max-width: none;
+    margin: 0 -40px 20px;
+    background-image: url('Background Images/background_image_16.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
 }
 
 /* General class for future image slices - rounded corners */
@@ -218,9 +243,67 @@ a {
     overflow: hidden;
 }
 
+/* Image + panel wrapper */
+.image-and-panel {
+    margin: 40px 0; /* uniform vertical gap above and below each image block */
+}
+
+/* Collapsible panels under each image */
+.approach-panel {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: max-height 0.5s ease, opacity 0.4s ease, transform 0.4s ease;
+}
+
+.approach-panel.is-open {
+    max-height: 4000px; /* Large enough to show full text */
+    opacity: 1;
+    transform: translateY(0);
+    margin-top: 24px;
+}
+
+/* Overlay text on images ("The future we're building.", "Our thesis.", "How we invest.", "Join us.") */
+.image-overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 80px); /* align with inner content width */
+    text-align: center;
+    font-family: 'IBM Plex Sans Condensed', sans-serif; /* same as 'Meet the team' */
+    font-size: 40px; /* reduced, consistent across all four boxes */
+    font-weight: 400; /* match weight of the 'Meet the team' header */
+    line-height: 1.1;
+    color: #FFFFFF;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.55);
+    pointer-events: none; /* clicks pass through to image */
+}
+
+@media (max-width: 1024px) {
+    .image-overlay-text {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .image-overlay-text {
+        font-size: 26px;
+        width: calc(100% - 60px);
+    }
+}
+
+@media (max-width: 480px) {
+    .image-overlay-text {
+        font-size: 22px;
+        width: calc(100% - 40px);
+    }
+}
+
 /* Definition Section */
 .definition-section {
-    margin-bottom: 60px;
+    margin-bottom: 40px; /* match gap used around image blocks */
 }
 
 .definition-title {
@@ -317,6 +400,11 @@ a {
 .invest-subsection {
     margin-top: 50px;
     margin-bottom: 50px;
+}
+
+/* Avoid extra trailing space at the bottom of the How We Invest panel */
+.invest-subsection:last-child {
+    margin-bottom: 0;
 }
 
 .invest-header {
@@ -467,12 +555,7 @@ a {
 }
 
 @media (max-width: 768px) {
-    .header-image-slice {
-        width: calc(100% + 60px);
-        height: 200px;
-        margin: 0 -30px 25px; /* Match 30px content-wrapper padding */
-    }
-
+    .header-image-slice,
     .invest-image-slice,
     .future-image-slice {
         width: calc(100% + 60px);
@@ -546,12 +629,7 @@ a {
         padding: 30px 20px 40px; /* Reduced top padding */
     }
     
-    .header-image-slice {
-        width: calc(100% + 40px);
-        height: 150px;
-        margin: 0 -20px 20px; /* Match 20px content-wrapper padding */
-    }
-
+    .header-image-slice,
     .invest-image-slice,
     .future-image-slice {
         width: calc(100% + 40px);
