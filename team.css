@@ -421,7 +421,10 @@ a {
 .team-photo-frame .team-photo.mark-photo,
 .team-photo-frame .team-photo.daniel-photo,
 .team-photo-frame .team-photo.jacob-photo { object-position: center 40% !important; }
-.team-photo-frame .team-photo.brian-photo { object-position: center 50% !important; } /* lower in frame */
+.team-photo-frame .team-photo.brian-photo {
+    object-position: center 55% !important; /* shift focus slightly lower */
+    transform: scale(1.22) translate(10px, 4px); /* zoom in further and nudge image more right */
+}
 
 /* Shift up 20px and extend image downward so more of the bottom is visible */
 .team-photo-frame .team-photo.rishabh-photo { object-position: center 32% !important; height: calc(100% + 20px); transform: translateY(-20px); }
@@ -439,6 +442,28 @@ a {
 .team-row-residents-1 .team-photo-frame .team-photo.odera-photo,
 .team-row-residents-2 .team-photo-frame .team-photo.odera-photo { object-position: center 45% !important; }
 
+/* Ana photo framing to visually match Gia's card height */
+.team-row-residents-2 .team-photo-frame .team-photo.ana-photo {
+    object-position: center 48% !important;
+    transform: scale(1.15) translateY(-5px); /* mirror Gia's zoom and shift */
+}
+
+/* Ana-specific text: smaller so her longer name doesn't stretch the card,
+   but keep the base card height consistent with other residents */
+.ana-card .name {
+    font-size: 20px;          /* smaller than default 24px */
+    line-height: 1.1;
+    margin-bottom: 4px;       /* tighter spacing below name */
+}
+.ana-card .role {
+    font-size: 18px;          /* match global .role size */
+    margin-top: 13px;         /* push "Resident" text 2px lower */
+    margin-bottom: 11px;      /* compensate so overall card height stays the same */
+}
+/* Extend Ana's card container slightly (~2px extra vs base) */
+.ana-card .card-front {
+    padding-bottom: 21px;     /* base 16px + ~5px extra */
+}
 
 .card-front .placeholder {
     width: 100%;
