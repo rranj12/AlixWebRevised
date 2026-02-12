@@ -262,6 +262,8 @@ a {
     opacity: 1;
     transform: translateY(0);
     margin-top: 24px;
+    padding-top: 24px;   /* space between image and top of text */
+    padding-bottom: 32px;/* space between bottom of text and next box */
 }
 
 /* Overlay text on images ("The future we're building.", "Our thesis.", "How we invest.", "Join us.") */
@@ -277,7 +279,10 @@ a {
     font-weight: 400; /* match weight of the 'Meet the team' header */
     line-height: 1.1;
     color: #FFFFFF;
-    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.55);
+    /* Stronger shadow so overlay text stands out more on all four images */
+    text-shadow:
+        0 0 8px rgba(0, 0, 0, 0.7),
+        0 4px 18px rgba(0, 0, 0, 0.8);
     pointer-events: none; /* clicks pass through to image */
 }
 
@@ -306,20 +311,33 @@ a {
     margin-bottom: 40px; /* match gap used around image blocks */
 }
 
+.definition-header-row {
+    display: flex;
+    flex-direction: column;   /* put meta row below "Alix" */
+    align-items: flex-start;
+    gap: 0;                   /* minimal space between "Alix" and meta row */
+}
+
+.definition-meta {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
 .definition-title {
     font-family: 'Instrument Serif', serif;
     font-size: 72px;
     font-weight: 400;
     line-height: 1.1;
     color: #1a1a1a;
-    margin-bottom: 12px;
+    margin-bottom: 0;         /* let meta row sit closer to the title */
 }
 
 .pronunciation {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 18px;
     color: #666;
-    margin-bottom: 8px;
+    margin-bottom: 0;
     font-style: italic;
 }
 
@@ -327,7 +345,7 @@ a {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 18px;
     color: #666;
-    margin-bottom: 12px;
+    margin-bottom: 0;
     font-weight: 500;
 }
 
@@ -387,6 +405,16 @@ a {
     margin-bottom: 24px;
 }
 
+/* Tighter paragraph spacing in the first text block under image 1,
+   so it matches the visual rhythm of section 2 */
+#panel-1 .content-section:first-of-type .section-text {
+    margin-bottom: 18px;
+}
+
+#panel-1 .content-section:first-of-type {
+    margin-bottom: 40px;
+}
+
 .section-text:last-child {
     margin-bottom: 0;
 }
@@ -418,12 +446,13 @@ a {
 
 /* Join Text */
 .join-text {
+    /* Match paragraph/line spacing used by .section-text */
     font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 400;
-    line-height: 1.4;
+    line-height: 1.8;
     color: #1a1a1a;
-    margin-top: 40px;
+    margin-top: 24px;
 }
 
 /* Footer */
