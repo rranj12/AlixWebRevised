@@ -364,7 +364,7 @@ a {
     align-items: stretch;
     justify-content: flex-start;
     padding: 16px;
-    border-radius: 6px;
+    border-radius: 8px; /* slightly rounded corners */
     background-color: #FCF7F0;
     color: #000000;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
@@ -387,7 +387,7 @@ a {
     object-fit: cover;
     object-position: center 40%;
     margin-bottom: 24px;
-    border-radius: 4px;
+    border-radius: 8px;
     background-color: #f0f0f0;
     display: block;
     flex-shrink: 0;
@@ -400,7 +400,7 @@ a {
     height: auto;
     margin-bottom: 24px;
     overflow: hidden;
-    border-radius: 6px;
+    border-radius: 8px; /* slightly rounded corners */
     background-color: #f0f0f0;
     flex-shrink: 0;
     border: 2px solid #e0e0e0;
@@ -421,6 +421,11 @@ a {
 .team-photo-frame .team-photo.mark-photo,
 .team-photo-frame .team-photo.daniel-photo,
 .team-photo-frame .team-photo.jacob-photo { object-position: center 40% !important; }
+
+/* Fine-tune Jacob: shift image up 5px and zoom in slightly */
+.team-photo-frame .team-photo.jacob-photo {
+    transform: scale(1.08) translateY(-15px);
+}
 .team-photo-frame .team-photo.brian-photo {
     object-position: center 55% !important; /* shift focus slightly lower */
     transform: scale(1.22) translate(10px, 4px); /* zoom in further and nudge image more right */

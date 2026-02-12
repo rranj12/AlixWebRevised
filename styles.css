@@ -517,8 +517,8 @@ a {
     background-color: rgba(1, 27, 49, 0.35); /* Less transparent - increased from 0.15 */
     backdrop-filter: blur(10px); /* Glass effect */
     -webkit-backdrop-filter: blur(10px); /* Safari support */
-    border: 2px solid #F5EDE0; /* Cream border matching background */
-    border-radius: 1%; /* 1% rounded corners */
+    border: 6px solid #FEFCF0; /* Thicker cream border ~ half the gap between boxes */
+    border-radius: 8px; /* slightly rounded corners */
     padding: 40px;
     display: flex;
     align-items: center;

@@ -180,7 +180,7 @@ a {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 12px; /* Matching header bar border-radius */
+    border-radius: 8px; /* slightly rounded corners */
     overflow: hidden; /* Ensure rounded corners are visible */
     cursor: pointer;
     position: relative; /* anchor overlay text so it doesn't move when panel expands */
@@ -196,7 +196,7 @@ a {
     background-size: cover;
     background-position: center center; /* Take slice from center of image */
     background-repeat: no-repeat;
-    border-radius: 12px; /* Matching header bar border-radius */
+    border-radius: 8px; /* slightly rounded corners */
     overflow: hidden; /* Ensure rounded corners are visible */
     cursor: pointer;
     position: relative; /* anchor overlay text */
@@ -212,7 +212,7 @@ a {
     background-size: cover;
     background-position: center center; /* Take slice from center of image */
     background-repeat: no-repeat;
-    border-radius: 12px; /* Matching header bar border-radius */
+    border-radius: 8px; /* slightly rounded corners */
     overflow: hidden; /* Ensure rounded corners are visible */
     cursor: pointer;
     position: relative; /* anchor overlay text */
@@ -232,14 +232,14 @@ a {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    border-radius: 12px;
+    border-radius: 8px; /* slightly rounded corners */
     overflow: hidden;
     position: relative;
 }
 
 /* General class for future image slices - rounded corners */
 [class*="-image-slice"] {
-    border-radius: 12px;
+    border-radius: 8px;
     overflow: hidden;
 }
 
@@ -403,6 +403,20 @@ a {
     line-height: 1.8;
     color: #1a1a1a;
     margin-bottom: 24px;
+}
+
+/* Lists inside sections under How We Invest */
+.section-list {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 20px;
+    line-height: 1.7;
+    color: #1a1a1a;
+    margin: 8px 0 24px 24px;
+    padding-left: 16px;
+}
+
+.section-list li {
+    margin-bottom: 6px;
 }
 
 /* Tighter paragraph spacing in the first text block under image 1,
