@@ -431,9 +431,12 @@ a {
 .team-photo-frame .team-photo.navdeep-photo { object-position: center 42% !important; height: calc(100% + 40px); transform: translateY(-40px); }
 .team-photo-frame .team-photo.michelle-photo { object-position: center 40% !important; height: calc(100% + 20px); transform: translateY(-20px); }
 .team-photo-frame .team-photo.arman-photo { object-position: center 30% !important; height: calc(100% + 20px); transform: translateY(-20px); }
-.team-photo-frame .team-photo.gia-photo { object-position: center 48% !important; transform: scale(1.15) translateY(-5px); } /* zoomed in, shifted up */
+.team-photo-frame .team-photo.gia-photo { object-position: center 48% !important; transform: scale(1.28) translateY(-29px); } /* zoomed in further, same vertical offset */
 .team-photo-frame .team-photo.olivia-photo { object-position: center 40% !important; }
-.team-photo-frame .team-photo.odera-photo { object-position: center 45% !important; } /* lower in frame */
+.team-photo-frame .team-photo.odera-photo {
+    object-position: center 50% !important;           /* shift focus slightly lower */
+    transform: scale(1.15) translateY(15px);          /* zoom in and nudge image 15px down */
+} /* lower in frame */
 /* Resident rows: ensure overrides win in media queries */
 .team-row-residents-1 .team-photo-frame .team-photo.navdeep-photo,
 .team-row-residents-2 .team-photo-frame .team-photo.navdeep-photo { object-position: center 42% !important; }
