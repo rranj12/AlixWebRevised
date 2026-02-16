@@ -10,13 +10,15 @@ html {
 }
 
 body {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
     background-color: #F5F3F0;
     color: #000000;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Remove underlines from all links by default */
@@ -140,7 +142,7 @@ a {
 
 .nav-item {
     position: relative;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: normal;
@@ -375,7 +377,7 @@ a {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 24px;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
     font-size: 16px;
     color: #5a5a5a;
 }
@@ -427,7 +429,7 @@ a {
     margin-right: auto;
     padding: 0 40px;
     box-sizing: border-box;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
 }
 
 .table-header {
@@ -495,6 +497,7 @@ a {
 }
 
 .table-row .company {
+    font-family: 'IBM Plex Sans', sans-serif;
     color: #000000;
 }
 
@@ -642,7 +645,7 @@ a {
 }
 
 .footer-heading {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -665,7 +668,7 @@ a {
 }
 
 .footer-links a {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
     font-size: 16px;
     font-weight: 400;
     color: #FCF7F0;
@@ -686,7 +689,7 @@ a {
 }
 
 .footer-copyright {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
     font-size: 14px;
     font-weight: 400;
     color: rgba(252, 247, 240, 0.8);
@@ -758,7 +761,7 @@ a {
     max-width: 90%;
 }
 .bios-popup-text {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
     font-size: 18px;
     line-height: 1.5;
     margin: 0;
