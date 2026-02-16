@@ -243,9 +243,9 @@ a {
 
 /* Hero Title - Large, bold, full-width heading */
 .hero-title {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Cormorant', serif;
     font-size: 72px;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.2;
     color: #0a2d4a; /* Slightly lighter dark blue from background image */
     margin: 0 0 2rem 0;
@@ -259,8 +259,8 @@ a {
 
 .hero-title em {
     font-style: italic;
-    font-family: 'Instrument Serif', serif;
-    font-weight: 400;
+    font-family: 'Cormorant', serif;
+    font-weight: 500;
 }
 
 /* Hero Subtitle - Larger, bolder descriptive text */
@@ -395,9 +395,9 @@ a {
     padding: 0 15px;
     margin: 0;
     z-index: 2;
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Cormorant', serif;
     font-size: 36px;
-    font-weight: 400;
+    font-weight: 500;
     color: #0a2d4a;
     text-align: center;
     letter-spacing: 0.02em;

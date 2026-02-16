@@ -327,9 +327,9 @@ a {
 }
 
 .definition-title {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Cormorant', serif;
     font-size: 72px;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.1;
     color: #1a1a1a;
     margin-bottom: 0;         /* let meta row sit closer to the title */
