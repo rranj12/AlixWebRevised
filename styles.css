@@ -245,7 +245,7 @@ a {
 .hero-title {
     font-family: 'Instrument Serif', serif;
     font-size: 72px;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 1.2;
     color: #0a2d4a; /* Slightly lighter dark blue from background image */
     margin: 0 0 2rem 0;
@@ -260,7 +260,7 @@ a {
 .hero-title em {
     font-style: italic;
     font-family: 'Instrument Serif', serif;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 /* Hero Subtitle - Larger, bolder descriptive text */
@@ -397,7 +397,7 @@ a {
     z-index: 2;
     font-family: 'Instrument Serif', serif;
     font-size: 36px;
-    font-weight: 600;
+    font-weight: 400;
     color: #0a2d4a;
     text-align: center;
     letter-spacing: 0.02em;
