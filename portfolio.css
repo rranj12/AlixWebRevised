@@ -123,15 +123,11 @@ a {
     display: none;
 }
 
-/* Navigation */
+/* Navigation - same layout as index/our-approach/team so Bios stays fixed */
 .navigation {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 1200px;
-    padding: 0 40px;
-    box-sizing: border-box;
+    left: 50px;
+    right: 50px;
     z-index: 2; /* Above purple bar */
     display: flex;
     align-items: center;
