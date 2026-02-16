@@ -243,7 +243,7 @@ a {
 
 /* Hero Title - Large, bold, full-width heading */
 .hero-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Instrument Serif', serif;
     font-size: 72px;
     font-weight: 600;
     line-height: 1.2;
@@ -259,7 +259,7 @@ a {
 
 .hero-title em {
     font-style: italic;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Instrument Serif', serif;
     font-weight: 600;
 }
 
@@ -395,7 +395,7 @@ a {
     padding: 0 15px;
     margin: 0;
     z-index: 2;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Instrument Serif', serif;
     font-size: 36px;
     font-weight: 600;
     color: #0a2d4a;
