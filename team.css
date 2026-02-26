@@ -489,6 +489,12 @@ a {
     color: #000000;
 }
 
+/* Smaller bio text for longer descriptions (Michelle, Odera, Olivia, Gia, Ana) */
+.team-card.card-bio-small .card-back p {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
 @media (max-width: 1200px) {
     /* Maintain column structure - partners/advisory 3 cols, residents 4 cols */
     .team-row-partners,
