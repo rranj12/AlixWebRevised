@@ -495,6 +495,12 @@ a {
     line-height: 1.4;
 }
 
+/* Extra-small bio text specifically for Arman's longer description */
+.team-card.card-bio-small.arman-card .card-back p {
+    font-size: 13px;
+    line-height: 1.35;
+}
+
 @media (max-width: 1200px) {
     /* Maintain column structure - partners/advisory 3 cols, residents 4 cols */
     .team-row-partners,
